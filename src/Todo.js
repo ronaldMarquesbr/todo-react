@@ -1,34 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import TodoForm from './TodoForm'
+import Item from './Item'
+import List from './List'
 import './Todo.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Todo(){
 
-    const [text, setText] = useState('');
+    const [items, setItems] = useState([]);
 
-    function handleChange(event){
+   
+    function onAddItem(text){
 
-        let todo = event.target.value;
-        setText(todo);
+        let it = new Item(text);
+        console.log(it)
+
+        setItems([...items, it]);
 
     }
 
-    return( <div className='container'>
-                <h1>Todo</h1>
-                
-                <form>
+    function onItemDeleted(item){
 
-                    <input type='text' onChange={handleChange}></input>
-                    <button>Add</button>
+        let filteredItems = items.filter(it => it.id != item.id);
 
-                </form>
+        setItems(filteredItems);
 
-                <ul>
+    }
 
-                    <li>{todo}</li>
+   
+    return(
 
-                </ul>
+        <div className='container'>
+            <h1>Todo</h1>
 
-            </div> );
+            <TodoForm onAddItem={onAddItem}></TodoForm>
+
+            <List onItemDeleted={onItemDeleted} items={items}></List>
+
+        </div>
+        
+
+    );
 };
+
 
 export default Todo

@@ -2,3 +2,21 @@
     margin: auto;
     max-width: 900px;
 }
+
+.form-control, .list-group-item{
+    width: 400px !important; 
+}
+
+.list-group-item{
+    word-wrap: break-word;
+}
+
+.btn{
+    width: fit-content !important;
+    height: fit-content !important;
+}
+
+input[type="checkbox"]{
+    border-radius: 50% !important;
+    transform: scale(1.4, 1.4);
+}

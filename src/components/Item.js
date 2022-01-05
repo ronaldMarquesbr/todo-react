@@ -1,12 +1,12 @@
 class Item{
 
     // variável de class
-    static lastId = 0;
+    static ID = Math.random();
 
 
     constructor(text){
 
-        this.id = Item.lastId++
+        this.id = Item.ID + Math.random();
         this.text = text;
         this.done = false;
 

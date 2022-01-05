@@ -1,23 +1,39 @@
-import React, { useState } from 'react'
-import TodoForm from './TodoForm'
-import Item from './Item'
-import List from './List'
+import React, { useEffect, useState } from 'react'
+import Header from './components/Header'
+import TodoForm from './components/TodoForm'
+import Item from './components/Item'
+import List from './components/List'
 import './Todo.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+ 
+const SAVED_ITEMS = 'savedItems';
 
 function Todo(){
 
     const [items, setItems] = useState([]);
 
+    useEffect(()=>{
+
+        let savedItems = JSON.parse(localStorage.getItem(SAVED_ITEMS));
+        if(savedItems){
+            setItems(savedItems);
+        }
+
+    },[]);
+
+    useEffect(()=>{
+
+        localStorage.setItem(SAVED_ITEMS, JSON.stringify(items));
+
+    }, [items]);
    
     function onAddItem(text){
 
         let it = new Item(text);
-        console.log(it)
 
         setItems([...items, it]);
 
-    }
+    };
 
     function onItemDeleted(item){
 
@@ -25,17 +41,35 @@ function Todo(){
 
         setItems(filteredItems);
 
-    }
+    };
+
+    function onDone(item){
+        let updatedItems = items.map(it => {
+
+            if(it.id === item.id){
+                it.done = !it.done;
+            };
+
+            return it;
+
+        });
+
+        setItems(updatedItems);
+
+    };
 
    
     return(
 
-        <div className='container'>
-            <h1>Todo</h1>
+        <div className='container my-3'>
+
+            <Header></Header>
+
+            <h2>Tarefas</h2>
 
             <TodoForm onAddItem={onAddItem}></TodoForm>
 
-            <List onItemDeleted={onItemDeleted} items={items}></List>
+            <List onDone={onDone} onItemDeleted={onItemDeleted} items={items}></List>
 
         </div>
         
@@ -44,4 +78,4 @@ function Todo(){
 };
 
 
-export default Todo
+export default Todo;

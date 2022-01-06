@@ -13,7 +13,7 @@ function ListItem(props){
 
                 <input className="form-check-input mx-3 my-0 " disabled={props.item.done} defaultChecked={props.item.done}  type="checkbox" onClick={()=>{ props.onDone(props.item) }}></input>
 
-                <button className='btn btn-sm btn-outline-danger'  onClick={()=> props.onItemDeleted(props.item)}>
+                <button className='btn btn-sm btn-outline-danger'  onClick={()=> props.onItemDeleted(item)}>
                     <i className='bx bx-trash'></i>
                 </button>
 

@@ -4,7 +4,7 @@ function Menu(props){
 
     return(
 
-        <nav className='navbar navbar-dark bg-dark navbar-expand-sm justify-content-between'>
+        <nav className='navbar navbar-light navbar-expand-sm justify-content-between'>
             <div className='navbar-brand d-sm-block logo-navbar'>
                 {props.titulo}
             </div>

@@ -1,18 +1,17 @@
 :root{
 
     --margin-nav: 1rem;
-
+    --cor-principal: #4F29F0
 }
 
 .container{
     background-color: #fff;
-    /* box-shadow: 0 0 5px 5px rgba(0, 0, 0, .2); */
-    margin: auto;
-    overflow: hidden;
-    max-width: 900px;
+    margin: 0 !important;
     min-height: 100vh;
     max-height: fit-content;
     padding:0 !important;
+    margin-bottom: 100px;
+    width: 100vw !important;
 }
 
 .form-control, .list-group-item{
@@ -27,23 +26,21 @@
     
     word-break: break-all;
     max-width: 100%;
-
 }
 
-.btn{
-    width: fit-content !important;
-    height: fit-content !important;
+.list{
+    margin: 2rem auto 0 auto;
+    width: 80%;
+    box-shadow: 0 10px 30px rgba(65, 72, 86, 0.2);
+    border-radius: 10px;
+    margin-top: 2rem;
+    padding: 10px 20px 10px 20px;
 }
 
-input[type="checkbox"]{
-    border-radius: 50% !important;
-    box-shadow: 0 0 0 0 rgb(13 110 253 / 25%);
-    transform: scale(1.4, 1.4);
-    transition: all .7s ease-in-out;
-}
+.botao-apagar{
+    justify-self: end;
+    width: 50px;
 
-input[type="checkbox"]:checked{
-    box-shadow: 0 0 0 80vw rgb(13 110 253 / 25%);
 }
 
 /* Header */
@@ -61,6 +58,7 @@ input[type="checkbox"]:checked{
 }
 
 .titulo{
+    color: var(--cor-principal);
     font-size: 9vh;
     margin: 0 0 0 1rem !important;
     font-family: 'Oswald';   
@@ -82,12 +80,15 @@ input[type="checkbox"]:checked{
 
 /* Menu */
 
+.navbar{
+    background-color: var(--cor-principal) !important;
+}
+
 .logo-navbar, .nav-link{
     color: white !important;
 }
 
 .logo-navbar{
-
     font-family: 'Oswald';
     font-size: 25px !important;
     margin-left: var(--margin-nav);

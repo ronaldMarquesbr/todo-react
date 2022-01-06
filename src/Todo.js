@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Menu from './components/Menu'
 import Header from './components/Header'
 import TodoForm from './components/TodoForm'
 import Item from './components/Item'
@@ -37,7 +38,7 @@ function Todo(){
 
     function onItemDeleted(item){
 
-        let filteredItems = items.filter(it => it.id != item.id);
+        let filteredItems = items.filter(it => it.id !== item.id);
 
         setItems(filteredItems);
 
@@ -61,8 +62,9 @@ function Todo(){
    
     return(
 
-        <div className='container my-3'>
-
+        <div className='container'>
+            
+            <Menu titulo="To Do"></Menu>
             <Header></Header>
 
             <h2>Tarefas</h2>

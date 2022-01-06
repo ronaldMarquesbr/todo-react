@@ -1,5 +1,5 @@
 import React from 'react';
-
+import taskImg from '../imgs/task-img.png'
 
 function Header(){
 
@@ -7,14 +7,17 @@ function Header(){
 
         <div className='header'>
 
-            <h1 className='titulo'>To Do</h1>
-
-            <button className='button-add'>Nova tarefa +</button>
-
-            <div className='div-button'>
-                <button className='button-add-teste'>Nova tarefa</button> 
-                <div className='add-icon'></div>
+            <div className='text-header'>
+                <h1 className='titulo'>To Do</h1>
+                <h2 className='subtitulo'>Tenha total controle sobre suas tarefas</h2>
             </div>
+
+            <div>
+                <img className='task-img' src={taskImg}></img>
+            </div>
+            
+            
+           
 
         </div>
 

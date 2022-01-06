@@ -4,7 +4,7 @@ function Menu(props){
 
     return(
 
-        <nav className='navbar navbar-dark bg-dark navbar-expand-sm'>
+        <nav className='navbar navbar-dark bg-dark navbar-expand-sm justify-content-between'>
             <div className='navbar-brand d-sm-block logo-navbar'>
                 {props.titulo}
             </div>
@@ -18,11 +18,19 @@ function Menu(props){
 
                 <ul className="navbar-nav text-center">
 
-                    <li className="nav-item"><a href="#home" className="nav-link">Home</a></li>
-                    <li className="nav-item"><a href="#price" className="nav-link">Preços</a></li>
-                    <li className="nav-item"><a href="#about" className="nav-link">Sobre</a></li>
-                    <li className="nav-item"><button className="btn btn-primary">Contate-nos</button></li>
-                    
+                    {props.items_nav.map( (item , index) => {
+                     
+                            if(item === 'Login'){
+
+                                return(<li key={index} className='nav-item mx-1'><a href={`#${item}`} className='nav-link d-flex align-items-center'>{item} <i className='bx bx-right-arrow-alt arrow-icon'></i> </a></li>);
+
+                            } else {
+
+                                return(<li key={index} className='nav-item mx-1'><a href={`#${item}`} className='nav-link'>{item}</a></li>);
+                            }
+                        }
+                                                
+                    )}     
 
                 </ul>
 

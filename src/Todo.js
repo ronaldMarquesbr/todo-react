@@ -4,6 +4,7 @@ import Header from './components/Header'
 import TodoForm from './components/TodoForm'
 import Item from './components/Item'
 import List from './components/List'
+// import './check-animation.css'
 import './Todo.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
  
@@ -64,7 +65,7 @@ function Todo(){
 
         <div className='container'>
             
-            <Menu titulo="To Do"></Menu>
+            <Menu titulo="To Do" items_nav={['Sobre', 'Login']} ></Menu>
             <Header></Header>
 
             <h2>Tarefas</h2>

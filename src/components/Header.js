@@ -13,7 +13,7 @@ function Header(){
             </div>
 
             <div>
-                <img className='task-img' src={taskImg}></img>
+                <img className='task-img' alt='illustration-task' src={taskImg}></img>
             </div>
             
             

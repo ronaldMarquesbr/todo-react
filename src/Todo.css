@@ -1,6 +1,12 @@
+:root{
+
+    --margin-nav: 1rem;
+
+}
+
 .container{
     background-color: #fff;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, .2);
+    /* box-shadow: 0 0 5px 5px rgba(0, 0, 0, .2); */
     margin: auto;
     overflow: hidden;
     max-width: 900px;
@@ -14,13 +20,14 @@
 }
 
 .list-group-item{
-    word-wrap: break-word;
     overflow: hidden;
 }
 
-
 .titulo-item{
-    font-weight: 200;
+    
+    word-break: break-all;
+    max-width: 100%;
+
 }
 
 .btn{
@@ -77,15 +84,43 @@ input[type="checkbox"]:checked{
 
 .logo-navbar, .nav-link{
     color: white !important;
-    font-family: 'Oswald';
 }
 
 .logo-navbar{
 
+    font-family: 'Oswald';
     font-size: 25px !important;
-    margin-left: 1rem;
+    margin-left: var(--margin-nav);
 }
 
-.nav-item{
+.nav-link{
+    position: relative;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Ubuntu';
+}
 
+.nav-link::after{
+    background-color: white;
+    bottom: 10%;
+    content: '';
+    height: 5%;
+    left: 50%;
+    position: absolute;
+    transition: all .5s;
+    width: 0%;
+}
+
+.nav-item:hover .nav-link::after{
+    left: 0;
+    width: 100%;
+}
+
+.arrow-icon{
+    font-size: 20px;
+}
+
+#myNav{
+    margin-right: var(--margin-nav);
+    flex-grow: unset !important;
 }

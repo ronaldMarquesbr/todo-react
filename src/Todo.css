@@ -14,12 +14,7 @@
     min-width: 99.99vw !important;
 }
 
-@media screen {
-    
-}
-
 .form-control{
-    /* margin: auto; */
     width: 80% !important; 
 }
 

@@ -8,7 +8,7 @@ import List from './components/List'
 import './check-animation.css'
 import './Todo.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
- 
+
 const SAVED_ITEMS = 'savedItems';
 
 function Todo(){

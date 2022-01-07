@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Menu from './components/Menu'
 import Header from './components/Header'
+import Description from './components/Description'
 import TodoForm from './components/TodoForm'
 import Item from './components/Item'
 import List from './components/List'
@@ -68,7 +69,9 @@ function Todo(){
             <Menu titulo="To Do" items_nav={['Sobre', 'Login']} ></Menu>
             <Header></Header>
 
-            <h2>Tarefas</h2>
+            <Description></Description>
+
+            <h1 className='display-1 text-center'>Tarefas</h1>
 
             <TodoForm onAddItem={onAddItem}></TodoForm>
 

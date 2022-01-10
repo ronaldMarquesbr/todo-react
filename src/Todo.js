@@ -3,6 +3,7 @@ import Menu from './components/Menu'
 import Header from './components/Header'
 import Description from './components/Description'
 import TodoForm from './components/TodoForm'
+import Modal from './components/Modal'
 import Item from './components/Item'
 import List from './components/List'
 import './check-animation.css'
@@ -13,6 +14,7 @@ const SAVED_ITEMS = 'savedItems';
 
 function Todo(){
 
+    const [showModal, setShowModal] = useState(false);
     const [items, setItems] = useState([]);
 
     useEffect(()=>{
@@ -35,6 +37,7 @@ function Todo(){
         let it = new Item(text);
 
         setItems([...items, it]);
+        onHideModal()
 
     };
 
@@ -61,19 +64,34 @@ function Todo(){
 
     };
 
+    function onHideModal(e){
+            setShowModal(false);
+    }
+
    
     return(
 
         <div className='container'>
             
-            <Menu titulo="To Do" items_nav={['Sobre', 'Login']} ></Menu>
+            <Menu titulo="To Do" items_nav={['Contatos', 'Sobre', 'Login',]} ></Menu>
+
             <Header></Header>
 
             <Description></Description>
 
             <h1 className='display-1 text-center'>Tarefas</h1>
 
-            <TodoForm onAddItem={onAddItem}></TodoForm>
+            
+            <Modal show={showModal} onHideModal={onHideModal}><TodoForm onAddItem={onAddItem}></TodoForm></Modal>
+
+            <div className='d-flex justify-content-center my-3'>
+
+                <div className='btn-group'>
+                    <button onClick={() => { setShowModal(true)}} className='btn btn-outline-primary btn-lg'>Nova tarefa</button>
+                    <button className='btn btn-primary btn-lg'>+</button>
+                </div>
+
+            </div>
 
             <List onDone={onDone} onItemDeleted={onItemDeleted} items={items}></List>
 

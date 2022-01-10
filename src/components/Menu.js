@@ -22,7 +22,7 @@ function Menu(props){
                      
                             if(item === 'Login'){
 
-                                return(<li key={index} className='nav-item mx-1'><a href={`#${item}`} className='nav-link d-flex align-items-center'>{item} <i className='bx bx-right-arrow-alt arrow-icon'></i> </a></li>);
+                                return(<li key={index} className='nav-item mx-1 item-login'><a href={`#${item}`} className='nav-link'>{item}</a></li>);
 
                             } else {
 

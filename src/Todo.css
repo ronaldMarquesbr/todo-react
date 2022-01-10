@@ -6,12 +6,12 @@
 
 .container{
     background-color: #fff;
-    overflow-x: hidden !important;
+    overflow: hidden !important;
     margin: 0 !important;
     min-height: 100vh;
     max-height: fit-content;
     padding:0 !important;
-    min-width: 99.99vw !important;
+    min-width: 100% !important;
 }
 
 .form-control{
@@ -38,7 +38,6 @@
 }
 
 /* Header */
-
 
 .header{
     align-items: center;
@@ -125,6 +124,21 @@ img[alt='study']{
     font-size: 25px !important;
 }
 
+.item-login{
+    border: 1.5px solid white;
+    border-radius: 10px;
+    padding: 0 10px;
+    transition: all .5s;
+}
+
+.item-login:hover a{
+    color: var(--cor-principal) !important;
+}
+
+.item-login:hover{
+    background-color: rgb(255, 255, 255);
+}
+
 .nav-link{
     position: relative;
     font-size: 20px;
@@ -146,10 +160,6 @@ img[alt='study']{
 .nav-item:hover .nav-link::after{
     left: 0;
     width: 100%;
-}
-
-.arrow-icon{
-    font-size: 20px;
 }
 
 #myNav{
@@ -192,4 +202,31 @@ img[alt='study']{
 
 .text-color{
     color: var(--cor-principal);
+}
+
+/* Modal */
+
+.Modal{
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.212);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    width: 100vw;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 999;
+}
+
+.cardModal{
+    border: solid 1.2px rgba(0, 0, 0, .2);
+    background-color: whitesmoke;
+    box-shadow: 0 10px 30px rgba(65, 72, 86, .25);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.hide{
+    display: none;
 }

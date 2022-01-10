@@ -27,10 +27,10 @@ function TodoForm(props){
 
     return(
 
-        <form className='mb-4'>
+        <form className='mb-4 d-flex justify-content-center'>
 
         <div className="d-flex">
-            <input onChange={handleChange} type="text" value={text} className='form-control ' ></input>
+            <input onChange={handleChange} type="text" value={text} className='form-control' ></input>
             <button onClick={addItem} className='btn btn-primary mx-2' >Add</button>
         </div>
 

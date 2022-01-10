@@ -6,8 +6,7 @@ import TodoForm from './components/TodoForm'
 import Modal from './components/Modal'
 import Item from './components/Item'
 import List from './components/List'
-import './check-animation.css'
-import './Todo.css'
+import './styles/Todo.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SAVED_ITEMS = 'savedItems';

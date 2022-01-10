@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Menu from './components/Menu'
-import Header from './components/Header'
+import Hero from './components/Hero'
 import Description from './components/Description'
 import TodoForm from './components/TodoForm'
 import Modal from './components/Modal'
@@ -75,7 +75,7 @@ function Todo(){
             
             <Menu titulo="To Do" items_nav={['Contatos', 'Sobre', 'Login',]} ></Menu>
 
-            <Header></Header>
+            <Hero></Hero>
 
             <Description></Description>
 

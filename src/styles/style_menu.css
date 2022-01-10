@@ -1,0 +1,55 @@
+.navbar{
+    background-color: var(--cor-principal) !important;
+    padding: 0 5rem 0 5rem;
+}
+
+.logo-navbar, .nav-link{
+    color: white !important;
+}
+
+.logo-navbar{
+    font-family: 'Oswald';
+    font-size: 25px !important;
+}
+
+.item-login{
+    border: 1.5px solid white;
+    border-radius: 10px;
+    padding: 0 10px;
+    transition: all .5s;
+}
+
+.item-login:hover a{
+    color: var(--cor-principal) !important;
+}
+
+.item-login:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.nav-link{
+    position: relative;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Ubuntu';
+}
+
+.nav-link::after{
+    background-color: white;
+    bottom: 10%;
+    content: '';
+    height: 5%;
+    left: 50%;
+    position: absolute;
+    transition: all .5s;
+    width: 0%;
+}
+
+.nav-item:hover .nav-link::after{
+    left: 0;
+    width: 100%;
+}
+
+#myNav{
+    flex-grow: unset !important;
+}

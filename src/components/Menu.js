@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/style_menu.css'
 
 function Menu(props){
 

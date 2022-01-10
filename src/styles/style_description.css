@@ -1,0 +1,35 @@
+.container-description{
+    align-items: center;
+    background-color: rgba(0, 0, 0, .1);
+    justify-content: space-around;
+    display: flex;
+    height: 600px;
+    width: 100%;
+}
+
+.card-desc{
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(65, 72, 86, 0.09);
+    display: flex;
+    flex-direction: column;
+    transition: all .5s;
+    height: 500px;  
+    width: 400px;
+}
+
+.card-desc:hover{
+    transform: scale3d(1.05, 1.05, 1.05);
+    box-shadow: 0 10px 30px rgba(65, 72, 86, 0.2);
+}
+
+.text-desc{
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    text-align: center;
+    cursor:default;
+}
+
+.text-color{
+    color: var(--cor-principal);
+}

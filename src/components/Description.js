@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/style_description.css'
 import successImg from '../imgs/success.png'
 import todo_illustrationImg from '../imgs/todo-illustration.png'
 import sleepingImg from '../imgs/sleeping.png'

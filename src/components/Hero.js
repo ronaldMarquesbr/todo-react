@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/style_hero.css'
 import taskImg from '../imgs/task-img.png'
 import runImg from '../imgs/run.png'
 import studyImg from '../imgs/study.png'

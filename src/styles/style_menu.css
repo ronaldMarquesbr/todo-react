@@ -1,6 +1,7 @@
 .navbar{
     background-color: var(--cor-principal) !important;
     padding: 0 5rem 0 5rem;
+    width: 100%;
 }
 
 .logo-navbar, .nav-link{

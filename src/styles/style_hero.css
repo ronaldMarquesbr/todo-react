@@ -1,4 +1,4 @@
-.header{
+.hero{
     align-items: center;
     display: flex;
     justify-content: center;
@@ -9,7 +9,7 @@
     width: 100% !important;
 }
 
-.text-header{
+.text-hero{
     align-items: flex-start;
     display: flex;
     flex-direction: column;
@@ -54,10 +54,11 @@
     grid-template: auto  / auto auto;
 }
 
-.header-img{
+.hero-img{
     border: solid 2px black;
     border-radius: 50%;
 }
+
 
 img[alt='run']{
     align-self: flex-end;
@@ -65,4 +66,12 @@ img[alt='run']{
 
 img[alt='study']{
     grid-column-start: 2;
+}
+
+@media screen and (max-width: 1345px){
+    
+    .hero-img{
+        /* width: 25vw; */
+    }
+
 }

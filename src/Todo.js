@@ -1,4 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import listReducer from './reducers/listReducer';
+
+// --- COMPONENTS ---
 import './styles/Todo.css'
 import Menu from './components/Menu'
 import Hero from './components/Hero'
@@ -6,64 +12,45 @@ import Description from './components/Description'
 import SectionFeedback from './components/SectionFeedback'
 import TodoForm from './components/TodoForm'
 import Modal from './components/Modal'
-import Item from './components/Item'
 import List from './components/List'
 
+// --- BOOTSTRAP ---
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 const SAVED_ITEMS = 'savedItems';
+
+
+function persistState(state){
+
+    localStorage.setItem(SAVED_ITEMS, JSON.stringify(state));
+
+}
+
+
+function loadState(){
+
+    const actualState = localStorage.getItem(SAVED_ITEMS);
+    if(actualState){
+        return JSON.parse(actualState);
+    } else {
+        return [];
+    }
+
+}
+
+
+
+const store = createStore(listReducer, loadState());
+
+store.subscribe(() => {
+    persistState(store.getState());
+})
+
 
 function Todo(){
 
     const [showModal, setShowModal] = useState(false);
-    const [items, setItems] = useState([]);
-
-    useEffect(()=>{
-
-        let savedItems = JSON.parse(localStorage.getItem(SAVED_ITEMS));
-        if(savedItems){
-            setItems(savedItems);
-        }
-
-    },[]);
-
-    useEffect(()=>{
-
-        localStorage.setItem(SAVED_ITEMS, JSON.stringify(items));
-
-    }, [items]);
-   
-    function onAddItem(text){
-
-        let it = new Item(text);
-
-        setItems([...items, it]);
-        onHideModal()
-
-    };
-
-    function onItemDeleted(item){
-
-        let filteredItems = items.filter(it => it.id !== item.id);
-
-        setItems(filteredItems);
-
-    };
-
-    function onDone(item){
-        let updatedItems = items.map(it => {
-
-            if(it.id === item.id){
-                it.done = !it.done;
-            };
-
-            return it;
-
-        });
-
-        setItems(updatedItems);
-
-    };
 
     function onHideModal(e){
             setShowModal(false);
@@ -82,21 +69,25 @@ function Todo(){
 
             <SectionFeedback></SectionFeedback>
 
-            <h1 className='display-1 text-center'>Tarefas</h1>
-
             
-            <Modal show={showModal} onHideModal={onHideModal}><TodoForm onAddItem={onAddItem}></TodoForm></Modal>
+            <Provider store={store}>
+                <h1 className='display-1 text-center'>Tarefas</h1>
 
-            <div className='d-flex justify-content-center my-3'>
+                <div className='d-flex justify-content-center my-3'>
 
-                <div className='btn-group'>
-                    <button onClick={() => { setShowModal(true)}} className='btn btn-outline-primary btn-lg'>Nova tarefa</button>
-                    <button className='btn btn-primary btn-lg'>+</button>
+                    <div className='btn-group'>
+                        <button onClick={() => { setShowModal(true)}} className='btn btn-outline-primary btn-lg'>Nova tarefa</button>
+                        <button className='btn btn-primary btn-lg'>+</button>
+                    </div>
+
                 </div>
 
-            </div>
+                <List></List>
 
-            <List onDone={onDone} onItemDeleted={onItemDeleted} items={items}></List>
+                <Modal show={showModal} onHideModal={onHideModal}>
+                    <TodoForm onHideModal={onHideModal}></TodoForm>
+                </Modal>
+            </Provider>
 
         </div>
         

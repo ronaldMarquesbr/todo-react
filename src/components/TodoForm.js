@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { addItem } from '../actions/listAction';
 
 
 function TodoForm(props){
 
     const [text, setText] = useState('');
+    const dispatch = useDispatch();
 
-    function addItem(event){
+    function addItemEvent(event){
 
         event.preventDefault();
 
         if(text){
-            // setItems([...items, text]);
-            props.onAddItem(text);
+            dispatch(addItem(text));
             setText('');
+            props.onHideModal();
         }
         
     }
@@ -31,7 +34,7 @@ function TodoForm(props){
 
         <div className="d-flex">
             <input onChange={handleChange} type="text" value={text} className='form-control' ></input>
-            <button onClick={addItem} className='btn btn-primary mx-2' >Add</button>
+            <button onClick={addItemEvent} className='btn btn-primary mx-2' >Add</button>
         </div>
 
         </form>

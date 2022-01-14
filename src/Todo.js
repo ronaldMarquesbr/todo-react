@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import './styles/Todo.css'
 import Menu from './components/Menu'
 import Hero from './components/Hero'
 import Description from './components/Description'
+import SectionFeedback from './components/SectionFeedback'
 import TodoForm from './components/TodoForm'
 import Modal from './components/Modal'
 import Item from './components/Item'
 import List from './components/List'
-import './styles/Todo.css'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SAVED_ITEMS = 'savedItems';
@@ -77,6 +79,8 @@ function Todo(){
             <Hero></Hero>
 
             <Description></Description>
+
+            <SectionFeedback></SectionFeedback>
 
             <h1 className='display-1 text-center'>Tarefas</h1>
 

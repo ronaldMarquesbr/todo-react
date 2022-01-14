@@ -2,7 +2,8 @@
 :root{
 
     --margin-nav: 1rem;
-    --cor-principal: #4F29F0
+    --cor-principal: #4F29F0;
+    --width-corpo: 1200px
 }
 
 .container{

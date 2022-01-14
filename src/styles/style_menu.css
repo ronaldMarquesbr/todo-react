@@ -1,7 +1,13 @@
+.container-nav{
+    justify-content: center;
+    display: flex;
+    background-color: var(--cor-principal);
+    width: 100%;
+}
+
 .navbar{
     background-color: var(--cor-principal) !important;
-    padding: 0 5rem 0 5rem;
-    width: 100%;
+    width: var(--width-corpo);
 }
 
 .logo-navbar, .nav-link{

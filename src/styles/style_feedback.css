@@ -1,0 +1,48 @@
+.section-feedback{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 600px;
+    width: var(--width-corpo);
+}
+
+.card-feedback{
+    display: flex;
+    background-color: white;
+    box-shadow: 1.5rem -1.5rem 1px 10px rgba(0, 0, 0, .15);
+    border: solid 1px rgba(0, 0, 0, 0.342);
+    align-items: center;
+    padding: 1rem;
+    justify-content: center;
+    column-gap: 2rem;
+    position: relative;
+    transition: all .5s;
+}
+
+.text-feedback{
+    /* color: rgba(0, 0, 0, .75); */
+    font-size: 2rem;
+    font-family: 'Bad Script', Arial, Helvetica, sans-serif;
+    width: 600px;
+    height: fit-content;
+    font-style: italic;
+}
+
+.footer-card-feedback:nth-child(1n){
+    font-size: 1.8rem;
+    font-weight: 400;
+    font-style: normal;
+    font-family: 'Ubuntu';
+}
+
+.footer-card-feedback div:nth-child(2n + 0){
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: normal;
+    font-family: 'Ubuntu';
+}
+
+
+img[alt='person']{
+    border-radius: 50%;
+}

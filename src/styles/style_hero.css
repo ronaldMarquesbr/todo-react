@@ -95,11 +95,16 @@
     }
 
     .grid-img{
-        width: 60%;
+        width: max(300px,75vw);
     }
 
     .text-hero{
         align-items: center;
     }
+}
 
+@media screen and (max-width: 460px){
+    .botao-iniciar{
+        width: 80vmin;
+    }
 }

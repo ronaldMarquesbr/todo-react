@@ -10,12 +10,13 @@ function Description(){
     return(
 
         <div className='container-description'>
+        <div className='description'>
 
             <div className='card-desc'>
 
                 <img src={successImg} alt='success'></img>
                 <div className='text-desc'>
-                    <h1 className='titulo-desc'>Atinja sua auto <span className='text-color'>performance</span></h1>
+                    <h1 className='titulo-desc'>Atinja sua auto <br/> <span className='text-color'>performance</span></h1>
                 </div>
                 
 
@@ -39,6 +40,7 @@ function Description(){
                 
             </div>
 
+        </div>
         </div>
 
     );

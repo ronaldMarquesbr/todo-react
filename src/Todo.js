@@ -10,9 +10,10 @@ import Menu from './components/Menu'
 import Hero from './components/Hero'
 import Description from './components/Description'
 import SectionFeedback from './components/SectionFeedback'
-import TodoForm from './components/TodoForm'
+// import TodoForm from './components/TodoForm'
 import Modal from './components/Modal'
-import List from './components/List'
+import CardRegister from './components/registerCard';
+// import List from './components/List'
 
 // --- BOOTSTRAP ---
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -60,18 +61,21 @@ function Todo(){
     return(
 
         <div className='container'>
-            
-            <Menu titulo="To Do" items_nav={['Contatos', 'Sobre', 'Login',]} ></Menu>
-
-            <Hero></Hero>
-
-            <Description></Description>
-
-            <SectionFeedback></SectionFeedback>
-
-            
             <Provider store={store}>
-                <h1 className='display-1 text-center'>Tarefas</h1>
+                <Menu titulo="To Do" items_nav={['Contatos', 'Sobre', 'Login',]} setShowModal={setShowModal}></Menu>
+
+                <Modal show={showModal} onHideModal={onHideModal} >
+                    <CardRegister></CardRegister>
+                </Modal> 
+
+
+                <Hero></Hero>
+
+                <Description></Description>
+
+                <SectionFeedback></SectionFeedback>
+            
+                {/* <h1 className='display-1 text-center'>Tarefas</h1>
 
                 <div className='d-flex justify-content-center my-3'>
 
@@ -84,9 +88,9 @@ function Todo(){
 
                 <List></List>
 
-                <Modal show={showModal} onHideModal={onHideModal}>
+                <Modal show={showModal} onHideModal={onHideModal} titulo={"Nova Tarefa"}>
                     <TodoForm onHideModal={onHideModal}></TodoForm>
-                </Modal>
+                </Modal> */}
             </Provider>
 
         </div>

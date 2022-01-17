@@ -24,7 +24,7 @@ function Menu(props){
                      
                             if(item === 'Login'){
 
-                                return(<li key={index} className='nav-item mx-1 item-login'><a href={`#${item}`} className='nav-link'>{item}</a></li>);
+                                return(<li key={index} className='nav-item mx-1 item-login'><a onClick={() => {props.setShowModal(true)}} className='nav-link'>{item}</a></li>);
 
                             } else {
 

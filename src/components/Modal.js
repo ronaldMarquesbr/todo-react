@@ -16,7 +16,7 @@ function Modal(props){
 
             <div className='cardModal'>
 
-                <h2>Nova Tarefa</h2>
+                <h2>{props.titulo}</h2>
                 {props.children}
 
             </div>

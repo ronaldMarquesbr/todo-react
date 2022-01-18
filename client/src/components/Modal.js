@@ -5,7 +5,7 @@ function Modal(props){
 
     function hideModal(event){
         let target = event.target;
-        if(target.id === 'modal'){
+        if(target.id === 'modal' || target.id === 'close-icon'){
             props.onHideModal()
         }
     }
@@ -14,9 +14,10 @@ function Modal(props){
 
         <div id='modal' onClick={hideModal} className={props.show ? 'Modal' : 'Modal hide'}>
 
+            
             <div className='cardModal'>
 
-                <h2>{props.titulo}</h2>
+                <i className='bx bx-x close-icon' onClick={hideModal} id='close-icon'></i>
                 {props.children}
 
             </div>

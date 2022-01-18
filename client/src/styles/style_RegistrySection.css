@@ -1,0 +1,18 @@
+.section-register{
+
+    align-items: center;
+    display: flex;
+    background-color: wheat;
+    height: 650px;
+    width: var(--width-corpo);
+
+}
+
+.register-card{
+
+    background-color: white;
+    border-radius: 10px;
+    height: 500px;
+    width: 600px;
+
+}

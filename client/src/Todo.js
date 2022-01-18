@@ -12,7 +12,8 @@ import Description from './components/Description'
 import SectionFeedback from './components/SectionFeedback'
 // import TodoForm from './components/TodoForm'
 import Modal from './components/Modal'
-import CardRegister from './components/registerCard';
+import CardRegister from './components/loginCard';
+import RegistrySection from './components/RegistrySection';
 // import List from './components/List'
 
 // --- BOOTSTRAP ---
@@ -50,18 +51,11 @@ store.subscribe(() => {
 
 function Todo(){
 
-    const [aluno, setAluno] = useState({});
     const [showModal, setShowModal] = useState(false);
 
     function onHideModal(e){
             setShowModal(false);
     }
-
-    useEffect(()=>{
-
-        fetch('/api').then( res => res.json() ).then( data => setAluno(data))
-  
-    }, [])
 
     return(
 
@@ -80,6 +74,7 @@ function Todo(){
 
                 <SectionFeedback></SectionFeedback>
 
+                <RegistrySection></RegistrySection>
             
                 {/* <h1 className='display-1 text-center'>Tarefas</h1>
 

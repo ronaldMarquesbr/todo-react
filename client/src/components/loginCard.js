@@ -1,13 +1,13 @@
 import React from 'react';
-import '../styles/style_registerCard.css'
+import '../styles/style_loginCard.css'
 
 function registerCard(){
 
     function nameClass(text){
-        return `${text}-register-card`
+        return `${text}-login-card`
     }
 
-    return( <div className='content-register-card'>
+    return( <div className={nameClass('content')}>
 
                 <h2 className={nameClass('titulo')}>Login</h2>
 

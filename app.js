@@ -1,16 +1,18 @@
 const express = require('express');
 const app = express();
 const path = require("path");
+const mongoose = require('mongoose');
 require('dotenv').config()
 
 
-const aluno = JSON.stringify({nome: 'Ronald Marques', idade: 16})
-// console.log(JSON.stringify(aluno))
-// console.log(aluno)
+mongoose.connect(process.env.MONGO_CONNECTION_URL, (error)=> {
+    if(error){
+        console.log(error)
+    } else {
+        console.log('Mongo Connected');
+    }
+});
 
-app.get('/api', (req, res) => {
-    res.send(aluno);
-})
 
 if(process.env.NODE_ENV != 'development'){
     app.use(express.static(path.join(__dirname, 'client/build')));
@@ -25,5 +27,5 @@ if(process.env.NODE_ENV != 'development'){
 }
 
 app.listen(3000, ()=> {
-    console.log("Running on 3000")
+    console.log("Running on 3000");
 })

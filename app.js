@@ -4,8 +4,12 @@ const path = require("path");
 require('dotenv').config()
 
 
+const aluno = JSON.stringify({nome: 'Ronald Marques', idade: 16})
+// console.log(JSON.stringify(aluno))
+// console.log(aluno)
+
 app.get('/api', (req, res) => {
-    res.send({nome: 'Ronald Marques0', idade: 16});
+    res.send(aluno);
 })
 
 if(process.env.NODE_ENV != 'development'){

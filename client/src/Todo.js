@@ -50,14 +50,19 @@ store.subscribe(() => {
 
 function Todo(){
 
-
+    const [aluno, setAluno] = useState({});
     const [showModal, setShowModal] = useState(false);
 
     function onHideModal(e){
             setShowModal(false);
     }
 
-   
+    useEffect(()=>{
+
+        fetch('/api').then( res => res.json() ).then( data => setAluno(data))
+  
+    }, [])
+
     return(
 
         <div className='container'>
@@ -74,6 +79,7 @@ function Todo(){
                 <Description></Description>
 
                 <SectionFeedback></SectionFeedback>
+
             
                 {/* <h1 className='display-1 text-center'>Tarefas</h1>
 

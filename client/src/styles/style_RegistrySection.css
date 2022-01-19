@@ -1,18 +1,81 @@
-.section-register{
-
-    align-items: center;
+.container-registry-section{
+    background: linear-gradient(90deg, rgb(241, 241, 241) 50%, #FFFF 50%);
     display: flex;
-    background-color: wheat;
+    justify-content: center;
+    border-top: solid 1px rgba(0, 0, 0, 0.301);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.301);
+    width: 100vw;
+    margin: 10rem;
+}
+
+.section-register{
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
     height: 650px;
     width: var(--width-corpo);
-
 }
 
 .register-card{
-
-    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     border-radius: 10px;
     height: 500px;
     width: 600px;
+}
+
+.box-input{
+    position: relative;
+}
+
+.label-register-card{
+    font-family: 'Ubuntu';
+    font-size: 1.6rem;
+    color: rgb(80, 80, 80);
+    left: 0;
+    top: 50%;
+    transition: all .2s;
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+.input-register-card{
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 2px black;
+    font-size: 1.6rem;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    outline: 0;
+    height: 45px;
+    width: 400px;
+}
+
+.register-button{
+    background-color: var(--cor-principal);
+    box-shadow: 0 5px 10px rgba(65, 72, 86, 0.25);
+    color: white;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    transition: all .5s;
+    border: none;
+    height: 60px;
+    width: 350px;
+}
+
+.register-button:hover{
+    background-color: white;
+    color: var(--cor-principal);
+    box-shadow: 0 5px 3px rgba(65, 72, 86, 0.25);
+}
+
+.active-input{
+
+    font-size: 1rem;
+    top: 0;
 
 }

@@ -50,9 +50,9 @@
     color: var(--cor-principal);
 }
 
-/* .botao-login-card:active{
+.botao-login-card:active{
     box-shadow: inset 0 1px 10px rgba(65, 72, 86, 0.5);
-} */
+}
 
 .link-login-card{
     color: var(--cor-principal);

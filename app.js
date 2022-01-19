@@ -26,6 +26,6 @@ if(process.env.NODE_ENV != 'development'){
     })
 }
 
-app.listen(3000, ()=> {
+app.listen(process.env.PORT, ()=> {
     console.log("Running on 3000");
 })

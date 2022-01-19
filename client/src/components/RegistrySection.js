@@ -6,48 +6,67 @@ function RegistrySection(props){
 
     function activeInput(event){
 
-        event.target.classList.add('active-input');
-    
+        let input = event.target;
+        let label = input.parentNode.childNodes[1];
+
+        if(input.value !== ''){
+            label.classList.add('active-input')
+        } else {
+            label.classList.remove('active-input')
+        }
+
     }
 
+    function addClassLabel(event){
+
+        let label = event.target.parentNode.childNodes[1];
+        label.classList.add('active-input');
+
+    }
 
     return(
 
         <div className='container-registry-section'>
         <section className='section-register'>
 
-            <div className='register-card'>
+            <div>
 
-                <h1>Cadastro</h1>
+                <h1 className='text-register-card'>Cadastre-se para obter acesso<br/> a nossa plataforma</h1>
 
-                <div className='box-input'>
+                <form className='register-form'>
 
-                    <input className='input-register-card' required />
-                    <label className='label-register-card'>Nome</label>
 
-                </div>
+                    <div className='box-input'>
 
-                
-                <div className='box-input'>
+                        <input className='input-register-card' id='input-nome' required onFocus={addClassLabel} onBlur={activeInput} />
+                        <label className='label-register-card' for='input-nome' >Nome</label>
 
-                    <input className='input-register-card' type='email' required onClick={activeInput} />
-                    <label className='label-register-card'>Email</label>
+                    </div>
+
                     
-                </div>
+                    <div className='box-input'>
 
-                
-                <div className='box-input'>
+                        <input className='input-register-card' id='input-email' type='email' required onFocus={addClassLabel} onBlur={activeInput} />
+                        <label className='label-register-card'for='input-email' >Email</label>
+                        
+                    </div>
 
-                    <input className='input-register-card' required type='password' />
-                    <label className='label-register-card'>Senha</label>
+                    
+                    <div className='box-input'>
 
-                </div>
+                        <input className='input-register-card' id='input-passwd' required onFocus={addClassLabel} onBlur={activeInput} type='password' />
+                        <label className='label-register-card'for='input-passwd' >Senha</label>
 
-                <button className='register-button'>Criar conta</button>
+                    </div>
+
+                    <button className='register-button' onDrop={() => {console.log('a')}} >Criar conta</button>
+
+                </form>
 
             </div>
 
             <img alt='woman' src={interfaceImg}></img>
+
 
         </section>
         </div>

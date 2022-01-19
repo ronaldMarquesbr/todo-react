@@ -56,5 +56,9 @@
 
 .link-login-card{
     color: var(--cor-principal);
+    cursor: pointer;
 }
 
+.footer-login-card{
+    margin-top: 1rem;
+}

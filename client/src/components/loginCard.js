@@ -20,7 +20,7 @@ function registerCard(){
 
                 </form>
 
-                <div>Ainda não tem uma conta?<a className={nameClass('link')}>Cadastre-se</a></div>
+                <div className='footer-login-card' >Ainda não tem uma conta?<a className={nameClass('link')}>Cadastre-se</a></div>
 
             </div>)
 

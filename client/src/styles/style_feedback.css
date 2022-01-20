@@ -1,3 +1,11 @@
+.container-feedback{
+    background: rgb(63,94,251);
+    background: linear-gradient(90deg, rgba(63,94,251,1) 0%, #FF9FAD 100%);
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+
 .section-feedback{
     align-items: center;
     justify-content: center;
@@ -47,7 +55,7 @@ img[alt='person']{
 
     .card-feedback{
         border: solid 1px rgba(0, 0, 0, 0.342);
-        box-shadow: 1.5rem -1.5rem 1px 10px rgba(0, 0, 0, .15);       
+        box-shadow: 1.5rem -1.5rem 1px 10px rgb(184, 184, 184);       
     }
 
     .text-feedback{

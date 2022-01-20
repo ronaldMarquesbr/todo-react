@@ -26,40 +26,40 @@ function RegistrySection(props){
 
     return(
 
-        <div className='container-registry-section'>
+        <div className='container-registry-section' id='registro'>
         <section className='section-register'>
 
             <div>
 
                 <h1 className='text-register-card'>Cadastre-se para obter acesso<br/> a nossa plataforma</h1>
 
-                <form className='register-form'>
+                <form className='register-form' method='POST' action='/user/register'>
 
 
                     <div className='box-input'>
 
-                        <input className='input-register-card' id='input-nome' required onFocus={addClassLabel} onBlur={activeInput} />
-                        <label className='label-register-card' for='input-nome' >Nome</label>
+                        <input className='input-register-card' id='input-nome' name='name' required onFocus={addClassLabel} onBlur={activeInput} />
+                        <label className='label-register-card' htmlFor='input-nome'>Nome</label>
 
                     </div>
 
                     
                     <div className='box-input'>
 
-                        <input className='input-register-card' id='input-email' type='email' required onFocus={addClassLabel} onBlur={activeInput} />
-                        <label className='label-register-card'for='input-email' >Email</label>
+                        <input className='input-register-card' id='input-email' name='email' type='email' required onFocus={addClassLabel} onBlur={activeInput} />
+                        <label className='label-register-card' htmlFor='input-email' >Email</label>
                         
                     </div>
 
                     
                     <div className='box-input'>
 
-                        <input className='input-register-card' id='input-passwd' required onFocus={addClassLabel} onBlur={activeInput} type='password' />
-                        <label className='label-register-card'for='input-passwd' >Senha</label>
+                        <input className='input-register-card' id='input-passwd' name='password' required onFocus={addClassLabel} onBlur={activeInput} type='password' />
+                        <label className='label-register-card' htmlFor='input-passwd' >Senha</label>
 
                     </div>
 
-                    <button className='register-button' onDrop={() => {console.log('a')}} >Criar conta</button>
+                    <button className='register-button' type='submit' >Criar conta</button>
 
                 </form>
 

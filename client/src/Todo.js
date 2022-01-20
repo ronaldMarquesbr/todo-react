@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import listReducer from './reducers/listReducer';
+// import listReducer from './reducers/listReducer';
+import modalReducer from './reducers/modalReducer';
 
 // --- COMPONENTS ---
 import './styles/Todo.css'
@@ -19,51 +20,55 @@ import RegistrySection from './components/RegistrySection';
 // --- BOOTSTRAP ---
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const SAVED_ITEMS = 'savedItems';
+// const SAVED_ITEMS = 'savedItems';
 
 
-function persistState(state){
+// function persistState(state){
 
-    localStorage.setItem(SAVED_ITEMS, JSON.stringify(state));
+//     localStorage.setItem(SAVED_ITEMS, JSON.stringify(state));
 
-}
-
-
-function loadState(){
-
-    const actualState = localStorage.getItem(SAVED_ITEMS);
-    if(actualState){
-        return JSON.parse(actualState);
-    } else {
-        return [];
-    }
-
-}
+// }
 
 
+// function loadState(){
 
-const store = createStore(listReducer, loadState());
+//     const actualState = localStorage.getItem(SAVED_ITEMS);
+//     if(actualState){
+//         return JSON.parse(actualState);
+//     } else {
+//         return [];
+//     }
 
-store.subscribe(() => {
-    persistState(store.getState());
-})
+// }
+
+
+
+// const store = createStore(listReducer, loadState());
+
+const store = createStore(modalReducer);
+
+// store.subscribe(() => {
+//     persistState(store.getState());
+// })
 
 
 function Todo(){
 
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
 
-    function onHideModal(e){
-            setShowModal(false);
-    }
+    // function onHideModal(e){
+    //         setShowModal(false);
+    // }
+
+ 
 
     return(
 
         <div className='container'>
             <Provider store={store}>
-                <Menu titulo="To Do" items_nav={['Contatos', 'Sobre', 'Login',]} setShowModal={setShowModal}></Menu>
+                <Menu titulo="To Do" items_nav={['Contatos', 'Sobre', 'Login',]}></Menu>
 
-                <Modal show={showModal} onHideModal={onHideModal} >
+                <Modal >
                     <CardRegister></CardRegister>
                 </Modal> 
 

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require("path");
 const mongoose = require('mongoose');
+const userRouter = require('./login_jwt/routes/userRouter');
 require('dotenv').config()
 
 
@@ -25,6 +26,8 @@ if(process.env.NODE_ENV != 'development'){
         })
     })
 }
+
+app.use('/user', express.urlencoded({ extended: true }) ,userRouter);
 
 app.listen(process.env.PORT, ()=> {
     console.log("Running on 3000");

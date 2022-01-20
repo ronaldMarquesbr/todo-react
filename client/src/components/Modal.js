@@ -1,23 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import '../styles/style_modal.css'
 
 function Modal(props){
 
-    function hideModal(event){
-        let target = event.target;
-        if(target.id === 'modal' || target.id === 'close-icon'){
-            props.onHideModal()
+    const state = useSelector((state) => {return state} )
+    const dispatch = useDispatch();
+
+    // function hideModal(event){
+    //     let target = event.target;
+    //     if(target.id === 'modal' || target.id === 'close-icon'){
+    //         props.onHideModal()
+    //     }
+    // }
+
+    let modal = document.getElementById('modal');
+    let closeIcon = document.getElementById('close-icon');
+
+    useEffect(() => {
+        if(state === 'show_login'){
+            modal.classList.remove('hide')
+        } else if(state === 'hide'){
+            modal.classList.add('hide');
+        }
+    })
+
+    function showModal(event){
+        if( event.target === modal || event.target === closeIcon ){
+            dispatch({type: 'hide'});
+
         }
     }
 
     return(
 
-        <div id='modal' onClick={hideModal} className={props.show ? 'Modal' : 'Modal hide'}>
+        <div id='modal' className='Modal hide' onClick={showModal}>
 
-            
             <div className='cardModal'>
 
-                <i className='bx bx-x close-icon' onClick={hideModal} id='close-icon'></i>
+                <i className='bx bx-x close-icon' id='close-icon'></i>
                 {props.children}
 
             </div>

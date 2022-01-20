@@ -1,0 +1,56 @@
+.content-confirmation-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 500px;
+    width: 500px;
+}
+
+.user-check{
+    font-size: 20rem;
+}
+
+.text-confirmation{
+    font-size: 2.05rem;
+    font-family: 'Oswald';
+    font-weight: 600;
+}
+
+.button-return {
+    background-color: white;
+    border: none;
+    box-shadow: 0 5px 10px rgba(65, 72, 86, 0.25);
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 2rem;
+    font-family: 'Ubuntu';
+    height: 70px;
+    padding: 0;
+    position: relative;
+    transition: all 0.5s;
+    overflow: hidden;
+    width: 200px;
+    z-index: 1; }
+    .button-return::after {
+      align-items: center;
+      content: "<";
+      color: var(--cor-principal);
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      font-size: 39.6px;
+      position: absolute;
+      right: -20%;
+      top: 0;
+      transition: all 0.5s ease-out;
+      width: fit-content;
+      z-index: 500; }
+    .button-return:hover {
+      text-indent: -20%; }
+      .button-return:hover::after {
+        right: 10%;
+        top: 0%; }
+    .button-return::before {
+      height: 100%;
+      width: 100%; }

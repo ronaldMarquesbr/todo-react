@@ -7,19 +7,12 @@ function Modal(props){
     const state = useSelector((state) => {return state} )
     const dispatch = useDispatch();
 
-    // function hideModal(event){
-    //     let target = event.target;
-    //     if(target.id === 'modal' || target.id === 'close-icon'){
-    //         props.onHideModal()
-    //     }
-    // }
-
     let modal = document.getElementById('modal');
     let closeIcon = document.getElementById('close-icon');
 
     useEffect(() => {
-        if(state === 'show_login'){
-            modal.classList.remove('hide')
+        if(state === 'show_login' || state === 'show_confirmation'){
+            modal.classList.remove('hide');
         } else if(state === 'hide'){
             modal.classList.add('hide');
         }
@@ -28,7 +21,6 @@ function Modal(props){
     function showModal(event){
         if( event.target === modal || event.target === closeIcon ){
             dispatch({type: 'hide'});
-
         }
     }
 

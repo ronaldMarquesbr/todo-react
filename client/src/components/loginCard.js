@@ -1,13 +1,27 @@
-import React from 'react';
-import '../styles/style_loginCard.css'
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import '../styles/style_loginCard.css';
 
-function registerCard(){
+function LoginCard(){
+
+    const state = useSelector((state) => {return state} )
 
     function nameClass(text){
         return `${text}-login-card`
     }
 
-    return( <div className={nameClass('content')}>
+    useEffect(()=>{
+
+        var loginSection = document.getElementById('login');
+
+        if(state === 'show_login'){
+            loginSection.classList.remove('hide');
+        } else {
+            loginSection.classList.add('hide');
+        }
+    })
+
+    return( <div className={`${nameClass('content')} hide`} id='login'>
 
                 <h2 className={nameClass('titulo')}>Login</h2>
 
@@ -27,4 +41,4 @@ function registerCard(){
 }
 
 
-export default registerCard;
+export default LoginCard;

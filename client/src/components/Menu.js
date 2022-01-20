@@ -7,10 +7,6 @@ function Menu(props){
     const state = useSelector((state) => {return state} )
     const dispatch = useDispatch();
 
-    useEffect(()=>{
-        console.log(state)
-    }, [state])
-
     return(
 
         <div className='container-nav'>

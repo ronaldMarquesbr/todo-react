@@ -43,3 +43,7 @@
     justify-self: end;
     width: 50px;
 }
+
+.hide{
+    display: none !important;
+}

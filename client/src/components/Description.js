@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/style_description.css'
 import successImg from '../imgs/success.png'
 import todo_illustrationImg from '../imgs/todo-illustration.png'
 import sleepingImg from '../imgs/sleeping.png'
+import api from '../services/api';
+
 
 
 function Description(){
+
+    const [user, setUser] = useState('');
+
+    useEffect(()=>{
+
+        api.get('/user/users').then((response)=> {
+            setUser(response.data)
+            console.log(response.data)
+        })
+
+    },[])
 
     return(
 
@@ -38,6 +51,12 @@ function Description(){
                     <h1 className='titulo-desc'>Evite a<br/><span className='text-color'>procrastinação</span></h1>
                 </div>
                 
+            </div>
+
+            <div className='card-desc'>
+
+                {user}
+
             </div>
 
         </div>

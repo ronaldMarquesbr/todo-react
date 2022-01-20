@@ -1,8 +1,11 @@
 import React from 'react';
 import interfaceImg from '../imgs/interface.png'
+import { useDispatch } from 'react-redux';
 import '../styles/style_RegistrySection.css'
 
 function RegistrySection(props){
+
+    const dispatch = useDispatch();
 
     function activeInput(event){
 
@@ -33,7 +36,7 @@ function RegistrySection(props){
 
                 <h1 className='text-register-card'>Cadastre-se para obter acesso<br/> a nossa plataforma</h1>
 
-                <form className='register-form' method='POST' action='/user/register'>
+                <form className='register-form' method='POST' action='/user/register' onSubmit={() => {dispatch({type: 'show_confirmation'})}}>
 
 
                     <div className='box-input'>

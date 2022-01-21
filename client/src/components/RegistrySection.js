@@ -17,34 +17,57 @@ function RegistrySection(props){
             setUser(response.data)
         })
 
-    },[])
+    },[]);
 
-    // function activeInput(event){
+    function addClassLabel(event){
 
-    //     let input = event.target;
-    //     let label = input.parentNode.childNodes[1];
+        let label = event.target.parentNode.childNodes[1];
+        label.classList.add('active-input');
 
-    //     if(input.value !== ''){
-    //         label.classList.add('active-input')
-    //     } else {
-    //         label.classList.remove('active-input')
-    //     }
+    }
 
-    // }
 
-    // function addClassLabel(event){
+    function activeInput(event){
 
-    //     let label = event.target.parentNode.childNodes[1];
-    //     label.classList.add('active-input');
+        let input = event.target;
+        let label = input.parentNode.childNodes[1];
 
-    // }
+        if(input.value !== ''){
+            label.classList.add('active-input')
+        } else {
+            label.classList.remove('active-input')
+        }
+
+    }
+
+    // let inputs = document.querySelectorAll('input');
+
+    // inputs.forEach( input => {
+    //     input.addEventListener('focus', addClassLabel);
+    //     input.addEventListener('blur', activeInput);
+    // });
+
 
     // VALIDAÇÃO FORMULÁRIO
 
     const fields = document.querySelectorAll("[required]");
 
+    function validateEmail(event){
+        var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        if (event.target.value.toString().match(validRegex)) {
+            console.log('email valido')
+          return true;
+        } else {
+          console.log("Invalid email address!");
+          return false;
+        }
+
+    }
 
     function validateField(field){
+
+        
 
         function verifyErrors() {
     
@@ -75,7 +98,7 @@ function RegistrySection(props){
                 },
                 email:{
 
-                    typeMismatch: "Preencha com o formato nome@exemplo.com",
+                    tooShort: "O email deve conter no mínimo 10 caracteres",
                     valueMissing: "Preencha este campo"
 
                 },
@@ -113,19 +136,12 @@ function RegistrySection(props){
         return function(){
 
             const error = verifyErrors();
-            const label = field.parentNode.querySelector('label');
-            console.log(error)
-            if(error) {
 
+            if(error) {
                 const message = customMessage(error);
                 setCustomMessage(message);
-
-            } 
-            
-            else {
-
+            } else {
                 setCustomMessage();
-
             }
 
         };
@@ -145,18 +161,24 @@ function RegistrySection(props){
     for( let field of fields ) {
 
         field.addEventListener("invalid", event => {
-
-        event.preventDefault();
-
-        customValidate(event);
-
+            event.preventDefault();
+            customValidate(event);
         });
 
-        field.addEventListener("input", customValidate);
+        field.addEventListener("blur", event => {
+            activeInput(event);
+            customValidate(event);
+        });
+
+        field.addEventListener("focus", event => {
+            addClassLabel(event);
+        });
+
+        if(field.type == 'email'){
+            field.addEventListener('blur', validateEmail);
+        }
 
     }
-
-
     
     document.addEventListener('DOMContentLoaded', ()=>{
         document.querySelector('.register-form').addEventListener('submit', event =>{
@@ -189,7 +211,7 @@ function RegistrySection(props){
                     
                     <div className='box-input'>
 
-                        <input className='input-register-card' id='input-email' name='email' type='email' required />
+                        <input className='input-register-card' id='input-email' minLength={10} name='email' type='email' required />
                         <label className='label-register-card' htmlFor='input-email'>Email</label>
                         <span></span>
                         

@@ -89,3 +89,13 @@
     color: var(--cor-principal);
 
 }
+input ~ span{
+    position: absolute;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color: red;
+    bottom: 0%;
+    transform: translateY(100%);
+    left: 0;
+
+}

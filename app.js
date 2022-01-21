@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require("path");
 const mongoose = require('mongoose');
+const cors = require('cors');
 const userRouter = require('./login_jwt/routes/userRouter');
 require('dotenv').config()
 
@@ -26,6 +27,8 @@ if(process.env.NODE_ENV != 'development'){
         })
     })
 }
+
+app.use('/user/users',cors({origin: "http://localhost:5000", methods: ['GET'] }))
 
 app.use('/user', express.urlencoded({ extended: true }) ,userRouter);
 

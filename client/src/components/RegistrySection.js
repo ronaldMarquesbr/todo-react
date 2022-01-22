@@ -14,7 +14,7 @@ function RegistrySection(props){
     useEffect(()=>{
 
         api.get('/user/users').then((response)=> {
-            setUser(response.data)
+            setUser(response.data);
         })
 
     },[]);
@@ -33,45 +33,25 @@ function RegistrySection(props){
         let label = input.parentNode.childNodes[1];
 
         if(input.value !== ''){
-            label.classList.add('active-input')
+            label.classList.add('active-input');
         } else {
             label.classList.remove('active-input')
         }
 
     }
 
-    // let inputs = document.querySelectorAll('input');
-
-    // inputs.forEach( input => {
-    //     input.addEventListener('focus', addClassLabel);
-    //     input.addEventListener('blur', activeInput);
-    // });
-
-
     // VALIDAÇÃO FORMULÁRIO
 
     const fields = document.querySelectorAll("[required]");
 
-    function validateEmail(event){
-        var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+   
 
-        if (event.target.value.toString().match(validRegex)) {
-            console.log('email valido')
-          return true;
-        } else {
-          console.log("Invalid email address!");
-          return false;
-        }
-
-    }
-
-    function validateField(field){
-
-        
+    function validateField(field){        
 
         function verifyErrors() {
     
             let foundError = false;
+
         
             for( let error in field.validity ) {
 
@@ -82,9 +62,17 @@ function RegistrySection(props){
                 } 
         
             }
-        
+
+            if(field.type === 'email'){
+                if(!validateEmail(field) && field.value !== ''){
+                    foundError = 'typeMismatch';
+                } else if(repeatedEmail(field)) {
+                    foundError = 'repeatedEmail';
+                }
+            }
+            
             return foundError;
-        
+    
         }
 
         function customMessage(typeError) {
@@ -99,7 +87,9 @@ function RegistrySection(props){
                 email:{
 
                     tooShort: "O email deve conter no mínimo 10 caracteres",
-                    valueMissing: "Preencha este campo"
+                    valueMissing: "Preencha este campo",
+                    typeMismatch: "Digite o email no formato 'nome@exemplo.com'.",
+                    repeatedEmail: "Email existente."
 
                 },
                 password:{
@@ -118,19 +108,43 @@ function RegistrySection(props){
         function setCustomMessage(message) {
 
             const spanError = field.parentNode.querySelector("span");
+            const label = field.parentNode.querySelector("label");
             
             if(message){
 
                 spanError.innerHTML = message;
+                label.classList.add('label-invalid');
+                field.classList.add('input-invalid');
 
             } 
             
             else {
 
                 spanError.innerHTML = "";
+                label.classList.remove('label-invalid');
+                field.classList.remove('input-invalid');
 
             }
 
+        }
+
+        
+        function validateEmail(field){
+            var validRegex = /^\w+([.-]?\w)*@\w+([.]+\w+)+$/;
+
+            if (field.value.toString().match(validRegex)) {
+                return true;
+            } else {
+            return false;
+            }
+        }
+
+        function repeatedEmail(field){
+            for(let email of user){
+                if(field.value === email){
+                    return true;
+                } 
+            }
         }
 
         return function(){
@@ -147,6 +161,7 @@ function RegistrySection(props){
         };
     }
 
+    
 
     function customValidate(event) {
 
@@ -174,10 +189,6 @@ function RegistrySection(props){
             addClassLabel(event);
         });
 
-        if(field.type == 'email'){
-            field.addEventListener('blur', validateEmail);
-        }
-
     }
     
     document.addEventListener('DOMContentLoaded', ()=>{
@@ -193,7 +204,7 @@ function RegistrySection(props){
         <div className='container-registry-section' id='registro'>
         <section className='section-register'>
 
-            <div>
+            <div className='register-card'>
 
                 <h1 className='text-register-card'>Cadastre-se para obter acesso<br/> a nossa plataforma</h1>
 

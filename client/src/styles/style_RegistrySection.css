@@ -1,5 +1,5 @@
 .container-registry-section{
-    background: linear-gradient(90deg, #FFFF 50%,rgb(241, 241, 241) 50%);
+    background: linear-gradient(90deg, #FFFF 0%,rgb(241, 241, 241) 100%);
     display: flex;
     justify-content: center;
     border-top: solid 1px rgba(0, 0, 0, 0.301);
@@ -12,7 +12,7 @@
     justify-content: center;
     display: grid;
     grid-template-columns: 1fr 1fr ;
-    height: 650px;
+    height: 750px;
     width: var(--width-corpo);
 }
 
@@ -20,6 +20,13 @@
     font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
     font-weight: 00;
     text-align: center;
+}
+
+.register-card{
+    background-color: #FFF;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
 }
 
 .register-form{
@@ -32,6 +39,9 @@
     width: 600px;
 }
 
+input:-internal-autofill-selected {
+    box-shadow: inset #fff 0 0 0 100px;
+}
 .box-input{
     position: relative;
 }
@@ -48,7 +58,11 @@
 }
 
 .input-register-card{
-    background-color: transparent;
+    background-color: white !important;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-progress-appearance: none;
     border: none;
     border-bottom: solid 2px black;
     font-size: 1.6rem;
@@ -60,6 +74,14 @@
 
 .input-register-card:focus, .input-register-card:valid{
     border-bottom: solid 2px var(--cor-principal);
+}
+
+.input-invalid{
+    border-bottom: solid 2px red !important;
+}
+
+.label-invalid{
+    color: red !important;
 }
 
 .register-button{
@@ -79,7 +101,7 @@
 .register-button:hover{
     background-color: white;
     color: var(--cor-principal);
-    box-shadow: 0 8px 18px rgba(65, 72, 86, 0.25);
+    box-shadow: 0 8px 20px rgba(65, 72, 86, 0.50);
 }
 
 .active-input{

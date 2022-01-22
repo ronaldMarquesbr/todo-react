@@ -18,11 +18,11 @@
 }
 
 .button-return {
-    background-color: white;
     border: none;
-    box-shadow: 0 5px 10px rgba(65, 72, 86, 0.25);
+    box-shadow: 0 5px 10px rgba(65, 72, 86, 0.8);
     border-radius: 1rem;
     cursor: pointer;
+    background-color: transparent;
     font-size: 2rem;
     font-family: 'Ubuntu';
     height: 70px;
@@ -49,7 +49,7 @@
     .button-return:hover {
       text-indent: -20%; }
       .button-return:hover::after {
-        right: 10%;
+        right: 20%;
         top: 0%; }
     .button-return::before {
       height: 100%;

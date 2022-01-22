@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import thankImg from '../imgs/thank.png'
 import '../styles/style_confirmation.css'
 
 function Confirmation(props){
@@ -24,7 +25,8 @@ function Confirmation(props){
 
         <div className='content-confirmation-card hide' id='confirmation'>
 
-            <i className='bx bxs-user-check user-check'></i>
+            {/* <i className='bx bxs-user-check user-check'></i> */}
+            <img src={thankImg} alt='thank'></img>
             <h2 className='text-confirmation'>Usuário cadastrado com sucesso!</h2>
             <button type="button" onClick={() => {dispatch({type:'hide'})}} className="button-return">Voltar</button>
 

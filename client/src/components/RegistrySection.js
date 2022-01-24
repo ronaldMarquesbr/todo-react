@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import interfaceImg from '../imgs/interface.png'
 import { useDispatch } from 'react-redux';
 import api from '../services/api';
@@ -8,8 +8,6 @@ import '../styles/style_RegistrySection.css'
 function RegistrySection(props){
 
     const dispatch = useDispatch();
-
-    const [user, setUser] = useState('');
 
     // useEffect(()=>{
 
@@ -46,16 +44,39 @@ function RegistrySection(props){
 
     // VALIDAÇÃO FORMULÁRIO
 
- 
+    function validateEmail(field){
+        var validRegex = /^\w+([.-]?\w)*@\w+([.]+\w+)+$/;
 
-    function validateField(field, emails){        
+        if (field.value.toString().match(validRegex)) {
+            return true;
+        }
+    }
+
+    async function repeatedEmail(field){
+
+        let emails = [];
+
+        await api.get('/user/users').then((response)=> {
+            emails = response.data;
+        });
+
+        for(let email of emails){
+            if(field.value == email.toString()){
+                return true;
+            } 
+        }
+
+        return false;
+       
+    }
+
+    function validateField(field){        
 
         let valid = false; 
 
-        function verifyErrors() {
+        async function verifyErrors() {
     
             let foundError = false;
-
         
             for( let error in field.validity ) {
                 if( field.validity[error] && !field.validity.valid ) {   
@@ -64,13 +85,19 @@ function RegistrySection(props){
             }
 
             if(field.type === 'email'){
+
+                let isRepeated = false;
+
+                await repeatedEmail(field).then( res => isRepeated = res );
+
                 if(!validateEmail(field) && field.value !== ''){
                     foundError = 'typeMismatch';
-                } else if(repeatedEmail(field)) {
+                } else if (isRepeated){
                     foundError = 'repeatedEmail';
                 }
+
             }
-            
+    
             return foundError;
     
         }
@@ -129,27 +156,11 @@ function RegistrySection(props){
 
         }
 
-        
-        function validateEmail(field){
-            var validRegex = /^\w+([.-]?\w)*@\w+([.]+\w+)+$/;
+        return async function(){
 
-            if (field.value.toString().match(validRegex)) {
-                return true;
-            }
-        }
+            let error = ''
 
-        function repeatedEmail(field){
-            
-            for(let email of emails){
-                if(field.value === email){
-                    return true;
-                } 
-            }
-        }
-
-        return function(){
-
-            const error = verifyErrors();
+            await verifyErrors().then( res => error = res);
 
             if(error) {
                 const message = customMessage(error);
@@ -165,23 +176,16 @@ function RegistrySection(props){
 
     
         
-    function customValidate(input){
+    async function customValidate(input){
 
         const field = input; 
-
-        let emails = [];
+        let validation = validateField(field);
+        let valid = false;
         
-        api.get('/user/users').then((response)=> {
+        await validation().then(res => valid = res);
 
-            emails = response.data;
+        return valid
 
-            const validation = validateField(field, emails);
-
-            let valid = validation();
-            console.log(`retorno: ${valid}`)
-            return valid;
-
-        });
     }
 
     
@@ -207,28 +211,29 @@ function RegistrySection(props){
     
         }
         
-        document.querySelector('.register-form').addEventListener('submit', eve =>{
-            
-            let inputs = document.querySelectorAll('[required]');
+        document.querySelector('.register-form').addEventListener('submit', async eve => {
+           
+            eve.preventDefault();
 
+            let valid = true;
+
+            let inputs = document.querySelectorAll('[required]');
+            
             for(let input of inputs){
 
-                let valid = customValidate(input);
-                console.log(`valido: ${valid}`);
-         
-                if(!valid){
-                    eve.preventDefault();
-                } else {
-                    console.log('valido')
-                }
-
+                await customValidate(input).then( res => {
+                    if(!res){
+                        valid = false;
+                    }
+                });
+            }
+            
+            if(valid){
+                eve.target.submit();
             }
 
         })
     })
-    
-
-    
 
     return(
 

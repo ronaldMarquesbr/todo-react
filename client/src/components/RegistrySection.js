@@ -11,13 +11,17 @@ function RegistrySection(props){
 
     const [user, setUser] = useState('');
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-        api.get('/user/users').then((response)=> {
-            setUser(response.data);
-        })
+    //     api.get('/user/users').then((response)=> {
+    //         setUser(response.data);
+    //     })
 
-    },[]);
+    // },[]);
+
+    // useEffect(()=>{
+    //     console.log(user)
+    // },[user]);
 
     function addClassLabel(event){
 
@@ -42,11 +46,11 @@ function RegistrySection(props){
 
     // VALIDAÇÃO FORMULÁRIO
 
-    const fields = document.querySelectorAll("[required]");
+ 
 
-   
+    function validateField(field, emails){        
 
-    function validateField(field){        
+        let valid = false; 
 
         function verifyErrors() {
     
@@ -54,13 +58,9 @@ function RegistrySection(props){
 
         
             for( let error in field.validity ) {
-
-                if( field.validity[error] && !field.validity.valid ) {
-                    
+                if( field.validity[error] && !field.validity.valid ) {   
                     foundError = error;
-        
                 } 
-        
             }
 
             if(field.type === 'email'){
@@ -120,6 +120,7 @@ function RegistrySection(props){
             
             else {
 
+                valid = true;
                 spanError.innerHTML = "";
                 label.classList.remove('label-invalid');
                 field.classList.remove('input-invalid');
@@ -134,13 +135,12 @@ function RegistrySection(props){
 
             if (field.value.toString().match(validRegex)) {
                 return true;
-            } else {
-            return false;
             }
         }
 
         function repeatedEmail(field){
-            for(let email of user){
+            
+            for(let email of emails){
                 if(field.value === email){
                     return true;
                 } 
@@ -158,45 +158,76 @@ function RegistrySection(props){
                 setCustomMessage();
             }
 
+            return valid;
+
         };
     }
 
     
-
-    function customValidate(event) {
-
-        const field = event.target; 
         
-        const validation = validateField(field);
+    function customValidate(input){
 
-        validation();
+        const field = input; 
+
+        let emails = [];
         
+        api.get('/user/users').then((response)=> {
+
+            emails = response.data;
+
+            const validation = validateField(field, emails);
+
+            let valid = validation();
+            console.log(`retorno: ${valid}`)
+            return valid;
+
+        });
     }
 
-    for( let field of fields ) {
-
-        field.addEventListener("invalid", event => {
-            event.preventDefault();
-            customValidate(event);
-        });
-
-        field.addEventListener("blur", event => {
-            activeInput(event);
-            customValidate(event);
-        });
-
-        field.addEventListener("focus", event => {
-            addClassLabel(event);
-        });
-
-    }
     
-    document.addEventListener('DOMContentLoaded', ()=>{
-        document.querySelector('.register-form').addEventListener('submit', event =>{
-            console.log('enviar o formulario');
-            event.preventDefault();
+    document.addEventListener('DOMContentLoaded', event => {
+
+        const fields = document.querySelectorAll("[required]");
+        
+        for( let field of fields ) {
+
+            field.addEventListener("invalid", event => {
+                customValidate(event.target);
+                event.preventDefault();
+            });
+    
+            field.addEventListener("blur", event => {
+                activeInput(event);
+                customValidate(event.target);
+            });
+    
+            field.addEventListener("focus", event => {
+                addClassLabel(event);
+            });
+    
+        }
+        
+        document.querySelector('.register-form').addEventListener('submit', eve =>{
+            
+            let inputs = document.querySelectorAll('[required]');
+
+            for(let input of inputs){
+
+                let valid = customValidate(input);
+                console.log(`valido: ${valid}`);
+         
+                if(!valid){
+                    eve.preventDefault();
+                } else {
+                    console.log('valido')
+                }
+
+            }
+
         })
     })
+    
+
     
 
     return(
@@ -208,7 +239,7 @@ function RegistrySection(props){
 
                 <h1 className='text-register-card'>Cadastre-se para obter acesso<br/> a nossa plataforma</h1>
 
-                <form className='register-form' method='POST' action='/user/register' onSubmit={() => {dispatch({type: 'show_confirmation'})}}>
+                <form className='register-form' method='POST' action='/user/register'>
 
 
                     <div className='box-input'>
@@ -231,7 +262,7 @@ function RegistrySection(props){
                     
                     <div className='box-input'>
 
-                        <input className='input-register-card' id='input-passwd' name='password' minLength={5} required type='password' />
+                        <input className='input-register-card' id='input-passwd' name='password' minLength={6} required type='password' />
                         <label className='label-register-card' htmlFor='input-passwd' >Senha</label>
                         <span></span>
 

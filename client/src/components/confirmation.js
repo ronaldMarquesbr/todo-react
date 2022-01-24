@@ -25,7 +25,6 @@ function Confirmation(props){
 
         <div className='content-confirmation-card hide' id='confirmation'>
 
-            {/* <i className='bx bxs-user-check user-check'></i> */}
             <img src={thankImg} alt='thank'></img>
             <h2 className='text-confirmation'>Usuário cadastrado com sucesso!</h2>
             <button type="button" onClick={() => {dispatch({type:'hide'})}} className="button-return">Voltar</button>

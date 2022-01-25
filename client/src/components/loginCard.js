@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import validateLogin from '../scripts/validateFormLogin';
+import '../scripts/validateFormRegistry'
 import '../styles/style_loginCard.css';
 
 function LoginCard(){
@@ -19,18 +21,40 @@ function LoginCard(){
         } else {
             loginSection.classList.add('hide');
         }
+    }, [state])
+
+   
+
+    document.addEventListener('DOMContentLoaded', ( event ) => {
+
+        let loginForm = document.querySelector('#login-form');
+   
+        loginForm.addEventListener('submit', ( event ) => {
+
+            event.preventDefault();
+
+            validateLogin(event.target);
+
+        })
+
     })
+    
 
     return( <div className={`${nameClass('content')} hide`} id='login'>
 
                 <h2 className={nameClass('titulo')}>Login</h2>
 
-                <form className={nameClass('form')}>
+                <form id='login-form' className={nameClass('form')} action='/user/login' method='POST'>
 
-                    <input className={nameClass('field')} name='email' placeholder='Email'  />
-                    <input className={nameClass('field')} name='senha' placeholder='Senha'/>
+                    <input className={nameClass('field')} name='email' placeholder='Email' required />
+                    <span></span>
+                    
+                    <input className={nameClass('field')} type='password' name='password' placeholder='Senha' required />
+                    <span></span>
                     
                     <button className={nameClass('botao')}>Entrar</button>
+
+                    <span className='span-error'></span>
 
                 </form>
 

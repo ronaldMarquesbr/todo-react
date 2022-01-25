@@ -1,75 +1,48 @@
-import React from 'react'
-
+import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-// import listReducer from './reducers/listReducer';
 import modalReducer from './reducers/modalReducer';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-// --- COMPONENTS ---
-import './styles/Todo.css';
+
+//---COMPONENTS     
 import Menu from './components/Menu';
-import Hero from './components/Hero';
-import Description from './components/Description';
-import SectionFeedback from './components/SectionFeedback';
-// import TodoForm from './components/TodoForm';
-import Modal from './components/Modal';
+import Home from './components/Home';
+import App from './components/App';
 
-import LoginCard from './components/loginCard';
-import Confirmation from './components/confirmation';
-import RegistrySection from './components/RegistrySection';
-// import List from './components/List';
-
-// --- BOOTSTRAP ---
+//---STYLE---
+import './styles/Todo.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 const store = createStore(modalReducer);
 
-function Todo(){
+function Todo(props){
 
     return(
 
-        <div className='container'>
-            <Provider store={store}>
-                <Menu titulo="To Do" items_nav={['Contatos', 'Sobre', 'Login',]}></Menu>
+        <Provider store={store}>
 
-                <Modal >
-                    <Confirmation></Confirmation>
-                    <LoginCard></LoginCard>
-                </Modal> 
+            <Router>
 
+                <div className='Todo'>
 
-                <Hero></Hero>
+                    <Menu titulo="To Do" items_nav={['Contatos', 'Sobre', 'Login',]}></Menu>
 
-                <Description></Description>
+                    <Routes>
 
-                <SectionFeedback></SectionFeedback>
+                        <Route path="/" element={<Home/>} />
+                        <Route path="/app" element={<App/>} />
 
-                <RegistrySection></RegistrySection>
-            
-                {/* <h1 className='display-1 text-center'>Tarefas</h1>
-
-                <div className='d-flex justify-content-center my-3'>
-
-                    <div className='btn-group'>
-                        <button onClick={() => { setShowModal(true)}} className='btn btn-outline-primary btn-lg'>Nova tarefa</button>
-                        <button className='btn btn-primary btn-lg'>+</button>
-                    </div>
+                    </Routes>
 
                 </div>
 
-                <List></List>
+            </Router>
 
-                <Modal show={showModal} onHideModal={onHideModal} titulo={"Nova Tarefa"}>
-                    <TodoForm onHideModal={onHideModal}></TodoForm>
-                </Modal> */}
-            </Provider>
+        </Provider>
 
-        </div>
-        
+    )
 
-    );
-};
-
+}
 
 export default Todo;

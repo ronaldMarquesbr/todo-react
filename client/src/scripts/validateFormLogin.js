@@ -8,7 +8,7 @@ function validateLogin(form){
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = event =>{
 
-        form.querySelector('.span-error').innerHTML = event.target.response;
+        form.querySelector('.span-error').innerHTML = `<i class='bx bxs-error-circle'></i>${event.target.response}`;
 
     }
 

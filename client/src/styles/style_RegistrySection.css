@@ -112,7 +112,7 @@ input:-internal-autofill-selected {
     color: var(--cor-principal);
 
 }
-input ~ span{
+.input-register-card ~ span{
     position: absolute;
     font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
     font-style: italic;

@@ -8,7 +8,15 @@ function validateLogin(form){
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = event =>{
 
-        form.querySelector('.span-error').innerHTML = `<i class='bx bxs-error-circle'></i>${event.target.response}`;
+        if(event.target){
+
+            console.log(event.target)
+            form.querySelector('.span-error').innerHTML = `<i class='bx bxs-error-circle'></i>${event.target.response}`;
+        } else {
+            console.log('caiu no else')
+        }
+
+        
 
     }
 

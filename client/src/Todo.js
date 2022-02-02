@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 //---COMPONENTS     
 import Menu from './components/Menu';
 import Home from './components/Home';
+import App from './components/App';
 
 //---STYLE---
 import './styles/Todo.css';
@@ -30,6 +31,7 @@ function Todo(props){
                     <Routes>
 
                         <Route path="/" element={<Home/>} />
+                        <Route path="/app" element={<App/>} />
 
                     </Routes>
 

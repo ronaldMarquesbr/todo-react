@@ -1,0 +1,5 @@
+.container-app{
+    background-color: gray;
+    height: 100%;
+    width: var(--width-corpo);
+}

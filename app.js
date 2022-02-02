@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const path = require("path");
-const { createEngine } = require('express-react-views');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRouter = require('./login_jwt/routes/userRouter');
@@ -17,38 +16,33 @@ mongoose.connect(process.env.MONGO_CONNECTION_URL, (error)=> {
     }
 });
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jsx');
-app.engine('jsx', createEngine());
 
-app.use(session({secret: 'segredo'}));
+app.use(session({
+    name: 'sessao',
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
 
+app.use(cors({origin: "http://localhost:5000"}));
 
 if(process.env.NODE_ENV != 'development'){
-    app.use(express.static(path.join(__dirname, 'client/build')));
+    app.use(express.static( path.join(__dirname, 'client','build') , {index: false} ));
 
     app.get('/', (req, res) => {
 
-        if(req.session.email){
-            res.render('app', {user: req.session.email});
+        if(req.session.login){
+            console.log('já tem a sessão: ', req.session.login);
         } else {
-            res.sendFile(path.join(__dirname, '/client/build/index.html'));
-        }
+            console.log("não tem sessão")
+        }   
+        res.sendFile( path.join(__dirname, 'client', 'build', 'index.html' ))
+        
     })
-
        
 }
 
-
-app.use('/user/users',cors({origin: "http://localhost:5000", methods: ['GET'] }))
-
 app.use('/user', express.urlencoded({ extended: true }) ,userRouter);
-
-app.get('/app', (req, res) => {
-
-    res.render('app', {user: 'ronaldpmarques01@gmail.com'});
-
-})
 
 app.listen(process.env.PORT, ()=> {
     console.log("Running on 3000");

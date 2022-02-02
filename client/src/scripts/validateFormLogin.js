@@ -2,24 +2,6 @@ import api from '../services/api';
 
 function validateLogin(form){
 
-    var xhr = new XMLHttpRequest();
-    
-    xhr.open('POST', '/user/login');
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onload = event =>{
-
-        if(event.target){
-
-            console.log(event.target)
-            form.querySelector('.span-error').innerHTML = `<i class='bx bxs-error-circle'></i>${event.target.response}`;
-        } else {
-            console.log('caiu no else')
-        }
-
-        
-
-    }
-
     let fieldsLogin = form.querySelectorAll('[required]');
 
     let content = '';
@@ -47,8 +29,12 @@ function validateLogin(form){
     }
 
     toSend = toSend.join('');
-
-    xhr.send(toSend);
+  
+    api.post('/user/login', toSend ).then( res => {
+        form.querySelector('.span-error').innerHTML = ``;
+    }).catch( err => {
+        form.querySelector('.span-error').innerHTML = `<i class='bx bxs-error-circle'></i>${err}`;
+    })
 
 }
 

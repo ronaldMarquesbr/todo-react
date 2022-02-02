@@ -29,11 +29,11 @@ function LoginCard(){
 
         let loginForm = document.querySelector('#login-form');
    
-        loginForm.addEventListener('submit', ( event ) => {
+        loginForm.addEventListener('submit', ( eve ) => {
 
-            event.preventDefault();
+            eve.preventDefault();
 
-            validateLogin(event.target);
+            validateLogin(eve.target);
 
         })
 
@@ -44,7 +44,7 @@ function LoginCard(){
 
                 <h2 className={nameClass('titulo')}>Login</h2>
 
-                <form id='login-form' className={nameClass('form')} action='/user/login' method='POST'>
+                <form id='login-form' className={nameClass('form')}>
 
                     <input className={nameClass('field')} name='email' placeholder='Email' required />
                     <span></span>

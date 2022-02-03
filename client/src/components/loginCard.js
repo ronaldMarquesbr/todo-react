@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router';
 import validateLogin from '../scripts/validateFormLogin';
-import '../scripts/validateFormRegistry'
+// import '../scripts/validateFormRegistry'
 import '../styles/style_loginCard.css';
 
 function LoginCard(){
@@ -33,7 +34,9 @@ function LoginCard(){
 
             eve.preventDefault();
 
-            validateLogin(eve.target);
+            if(validateLogin(eve.target)){
+                Navigate({to: '/app'});
+            }
 
         })
 

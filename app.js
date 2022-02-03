@@ -54,9 +54,9 @@ app.get('/user_session', (req, res) => {
 
 app.use('/user', express.urlencoded({ extended: true }) ,userRouter);
 
-app.use((req, res, next) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+// app.use((req, res, next) => {
+//     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
 
 app.listen(process.env.PORT, ()=> {
     console.log("Running on 3000");

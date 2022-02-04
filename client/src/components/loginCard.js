@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import validateLogin from '../scripts/validateFormLogin';
 // import '../scripts/validateFormRegistry'
 
@@ -24,25 +24,6 @@ function LoginCard(){
             loginSection.classList.add('hide');
         }
     }, [state])
-
-   
-
-    // document.addEventListener('DOMContentLoaded', ( event ) => {
-
-    //     let loginForm = document.querySelector('#login-form');
-   
-    //     loginForm.addEventListener('submit', async ( eve ) => {
-
-    //         eve.preventDefault();
-
-    //         let success = false; 
-    //         await validateLogin(eve.target).then( res => success = res);
-
-    //         return success;
-
-    //     })
-
-    // })
     
     let navigate = useNavigate();
 

@@ -44,9 +44,19 @@ if(process.env.NODE_ENV != 'development'){
 
 app.use('/user', express.urlencoded({ extended: true }) ,userRouter);
 
-// app.use((req, res, next) => {
-//     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-// });
+app.get('/user_session', (req, res) => {
+
+    if(req.session.login){
+        res.send(req.session.login);
+    } else {
+        res.send(false);
+    }
+
+})
+
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(process.env.PORT, ()=> {
     console.log("Running on 3000");

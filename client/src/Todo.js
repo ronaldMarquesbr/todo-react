@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 //---COMPONENTS     
-import Menu from './components/Menu';
 import Home from './components/Home';
 import App from './components/App';
 
@@ -25,8 +24,6 @@ function Todo(props){
             <Router>
 
                 <div className='Todo'>
-
-                    <Menu titulo="To Do" items_nav={['Contatos', 'Sobre', 'Login',]}></Menu>
 
                     <Routes>
 

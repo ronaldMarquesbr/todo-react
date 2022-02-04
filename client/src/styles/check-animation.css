@@ -20,6 +20,7 @@
     cursor: pointer;
     display: grid;
     font-size: 30px;
+    font-family: 'Bad Script', Arial, Helvetica, sans-serif;
     font-weight: 200;
     align-items: center;
     width: fit-content;

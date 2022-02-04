@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import modalReducer from '../reducers/modalReducer';
 
 // --- COMPONENTS ---
+import Menu from './Menu';
 import Hero from './Hero';
 import Description from './Description';
 import SectionFeedback from './SectionFeedback';
@@ -21,6 +22,8 @@ function Home(){
     return(
 
         <div className='container'>
+            
+            <Menu titulo="To Do" items_nav={['Contatos', 'Sobre', 'Login',]}></Menu>
 
             <Modal >
                 <Confirmation></Confirmation>

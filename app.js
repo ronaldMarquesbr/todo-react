@@ -42,16 +42,6 @@ if(process.env.NODE_ENV != 'development'){
        
 }
 
-app.get('/user_session', (req, res) => {
-
-    if(req.session.login){
-        res.send(req.session.login);
-    } else {
-        res.send('error');
-    }
-
-})
-
 app.use('/user', express.urlencoded({ extended: true }) ,userRouter);
 
 // app.use((req, res, next) => {

@@ -1,8 +1,8 @@
-import { Navigate } from 'react-router';
 import api from '../services/api';
 
-function validateLogin(form){
+async function validateLogin(form){
 
+    let status = false;
     let fieldsLogin = form.querySelectorAll('[required]');
 
     let content = '';
@@ -31,17 +31,18 @@ function validateLogin(form){
 
     toSend = toSend.join('');
   
-    api.post('/user/login', toSend ).then( res => {
+    await api.post('/user/login', toSend ).then( (res) => {
 
         form.querySelector('.span-error').innerHTML = ``;
-        return true;
+        status = true;
 
     }).catch( err => {
 
         form.querySelector('.span-error').innerHTML = `<i class='bx bxs-error-circle'></i>${err.response.data}`;
-        return false;
 
     })
+
+    return status;
 
 }
 

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 import validateLogin from '../scripts/validateFormLogin';
 // import '../scripts/validateFormRegistry'
+
 import '../styles/style_loginCard.css';
 
 function LoginCard(){
@@ -26,28 +27,43 @@ function LoginCard(){
 
    
 
-    document.addEventListener('DOMContentLoaded', ( event ) => {
+    // document.addEventListener('DOMContentLoaded', ( event ) => {
 
-        let loginForm = document.querySelector('#login-form');
+    //     let loginForm = document.querySelector('#login-form');
    
-        loginForm.addEventListener('submit', ( eve ) => {
+    //     loginForm.addEventListener('submit', async ( eve ) => {
 
-            eve.preventDefault();
+    //         eve.preventDefault();
 
-            if(validateLogin(eve.target)){
-                Navigate({to: '/app'});
-            }
+    //         let success = false; 
+    //         await validateLogin(eve.target).then( res => success = res);
 
-        })
+    //         return success;
 
-    })
+    //     })
+
+    // })
     
+    let navigate = useNavigate();
+
+    async function formSubmit( eve ) {
+
+        eve.preventDefault();
+
+        let success = false; 
+        await validateLogin(eve.target).then( res => success = res);
+
+        if(success){
+            navigate('/app', { replace: true });
+        }
+
+    };
 
     return( <div className={`${nameClass('content')} hide`} id='login'>
 
                 <h2 className={nameClass('titulo')}>Login</h2>
 
-                <form id='login-form' className={nameClass('form')}>
+                <form id='login-form' className={nameClass('form')} onSubmit={ event => formSubmit(event) } >
 
                     <input className={nameClass('field')} name='email' placeholder='Email' required />
                     <span></span>

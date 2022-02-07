@@ -37,7 +37,7 @@ function App(props){
                     <div className='header-list-section'>
 
                         <h2 className='titulo-tarefas'>Tarefas</h2>
-                        <h2 className='texto-nova-tarefa'>Nova tarefa +</h2>
+                        {/* <h2 className='texto-nova-tarefa'>Nova tarefa +</h2> */}
 
                     </div>
                     
@@ -54,6 +54,29 @@ function App(props){
                 <div className='card-modal-tarefa'>
 
                     <h2>Nova tarefa</h2>
+
+                    <div>
+
+                        <div className='box-field'>
+
+                            <label>Título</label>
+                            <input type='text' className='field'></input>
+
+                        </div>
+
+                        
+                    </div>
+
+                    <div>
+
+                        <div className='box-field'>
+
+                            <label>Descrição</label>
+                            <textarea></textarea>
+
+                        </div>
+
+                    </div>
 
                 </div>
 

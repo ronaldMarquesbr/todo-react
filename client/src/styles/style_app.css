@@ -12,8 +12,8 @@
 
 .container-app{
     background-color: white;
-    border-radius: 1rem;
-    margin: auto auto;
+    border-radius: .5rem;
+    margin: auto;
     min-height: 800px;
     width: var(--width-corpo);
     z-index: 2;
@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 3rem;
+    padding: 1rem 3rem;
 }
 
 .name-user{
@@ -63,6 +63,9 @@
 }
 
 .modal-tarefa{
+    display: none;
+    align-items: center;
+    justify-content: center;
     background-color: rgba(0, 0, 0, 0.164);
     position: fixed;
     top: 50%;
@@ -74,5 +77,52 @@
 }
 
 .card-modal-tarefa{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFF;
+    box-shadow: 0 .8rem 1rem .2rem rgba(0, 0, 0, 0.3);
+    border-radius: .5rem;
+    height: 650px;
+    width: 700px;
+}
 
+.card-modal-tarefa h2{
+    font-family: 'Ubuntu';
+    margin: 1rem;
+}
+
+.box-field{
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0;
+}
+
+.box-field label{
+    font-family: 'Ubuntu';
+    font-size: 1.3rem;
+    color: #666;
+}
+
+.field, .box-field textarea{
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    /* border: solid rgba(0, 0, 0, 0.8) 1px; */
+    border: solid 1px var(--cor-principal);
+    border-radius: 6px;
+    outline: none;
+    width: 400px;
+}
+
+.field{
+    height: 40px;
+}
+
+.field:focus, .box-field textarea:focus{
+    border: solid 1px var(--cor-principal);
+}
+
+.box-field textarea{
+    height: 200px;
+    resize: none;
 }

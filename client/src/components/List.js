@@ -2,31 +2,54 @@ import React from 'react';
 
 function List(props){
 
-    
+    function addAnimation(icon){
+
+        let inClassList = false;
+
+        let desc = icon.parentNode.parentNode.querySelector('.desc-task');
+        let animClass = 'showDesc';
+
+        for(let value of desc.classList){
+
+            if(value == animClass){
+
+                inClassList = true
+
+            } 
+
+        }
+
+        if(inClassList){
+
+            desc.classList.remove(animClass);
+
+        } else {
+
+            desc.classList.add(animClass);
+
+        }
+
+    }
 
     return(
 
         <div className='list'>
             
-            <div id="checklist">
-                     
-                <input type="checkbox"></input>
-                <label>Teste</label>
-                <i className='bx bxs-chevron-down'></i>
+            <div>
 
-            </div>
+                <div id="list-item">
+                        
+                    <input type="checkbox"></input>
+                    <label>Teste</label>
+                    <i className='bx bxs-chevron-down' onClick={(event) => addAnimation(event.target)}></i>
 
-            <div id="checklist">
-                     
-                <input type="checkbox"></input>
-                <label>Teste</label>
-                <i className='bx bxs-chevron-down'></i>
-                
+                </div>
+
                 <div className='desc-task'>
 
-                    <h4>Descrição:</h4>
-                    <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,</p>
-                    <button>Excluir</button>
+                        <h4>Descrição:</h4>
+                        <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,</p>
+                        <button>Excluir</button>
 
                 </div>
 

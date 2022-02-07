@@ -107,7 +107,6 @@
 .field, .box-field textarea{
     font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
     font-size: 1.3rem;
-    /* border: solid rgba(0, 0, 0, 0.8) 1px; */
     border: solid 1px var(--cor-principal);
     border-radius: 6px;
     outline: none;

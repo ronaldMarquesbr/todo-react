@@ -1,3 +1,11 @@
+:root{
+  --height-desc: 260px;
+}
+
+.list > div{
+  position: relative;
+  transition: all .5s;
+}
 #list-item {
   --background: #ffffff;
   --text: #414856;
@@ -19,26 +27,29 @@
   align-items: center;
   z-index: 10;
 }
-
+  .margin-desc{
+    padding-bottom: var(--height-desc);
+  }
   .showDesc{
-    animation: showDesc 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-    /* display: block !important;
-    opacity: 1 !important; */
+    top: calc(100% - var(--height-desc)) !important;
+    max-height: var(--height-desc) !important;
+    padding: 1rem !important;
   }
   .desc-task{
-    display: none;
     background-color: rgb(241, 241, 241);
     border: solid 1px #666;
     border-end-start-radius: 1rem;
     border-end-end-radius: 1rem;
-    padding: 1rem;
+    padding: 0;
     position: absolute;
-    top: 0%;
+    top: 90%;
     left: 50%;
     transform: translateX(-50%);
-    height: 300px;
+    max-height: 0px;
+    transition: all .5s;
+    overflow: hidden;
+    pointer-events: none;
     width: 90%;
-    opacity: 0;
     z-index: 1;
   }
   .desc-task h4{
@@ -78,7 +89,7 @@
     cursor: pointer;
     display: grid;
     font-size: 30px;
-    font-family: 'Bad Script', Arial, Helvetica, sans-serif;
+    font-family: 'ubuntu', Arial, Helvetica, sans-serif;
     font-weight: 200;
     align-items: center;
     width: fit-content;
@@ -199,14 +210,9 @@
     box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0; } }
 @keyframes showDesc{
   0%{
-    display: block !important;
-  }
-  20%{
-    opacity: 1 !important;
+    height: 0;
   }
   100%{
-    display: block !important;
-    top: 100%;
-    opacity: 1 !important;
+    height: 270px;
   }
 }

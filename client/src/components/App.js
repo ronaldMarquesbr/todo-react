@@ -30,51 +30,34 @@ function App(props){
                     <h2 className='name-user'><i className='bx bx-user'></i>Usuário</h2>
                     
                 </header>
-                
 
-                <div className='list-section'>
-                    
-                    <div className='header-list-section'>
+                <div className='section-task-form'>
 
-                        <h2 className='titulo-tarefas'>Tarefas</h2>
-                        {/* <h2 className='texto-nova-tarefa'>Nova tarefa +</h2> */}
 
-                    </div>
-                    
-                    <List></List>
 
                 </div>
+                
+                <div className='d-flex mx-5 justify-content-between'>
 
+                    <div className='list-section'>
+                        
+                        <div className='header-list-section'>
 
-
-            </div>
-
-            <div className='modal-tarefa'>
-
-                <div className='card-modal-tarefa'>
-
-                    <h2>Nova tarefa</h2>
-
-                    <div>
-
-                        <div className='box-field'>
-
-                            <label>Título</label>
-                            <input type='text' className='field'></input>
+                            <h2 className='titulo-tarefas'>Tarefas</h2>
 
                         </div>
-
                         
+                        <List></List>
+
+                        <button className='button-new-task'>Nova tarefa</button>
+
                     </div>
 
-                    <div>
-
-                        <div className='box-field'>
-
-                            <label>Descrição</label>
-                            <textarea></textarea>
-
-                        </div>
+                    <div className='counter-card'>
+                        
+                        <h4>Tarefas realizadas</h4>
+                        <h2>8</h2>
+                        <div className='circle'></div>
 
                     </div>
 

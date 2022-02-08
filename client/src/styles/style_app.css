@@ -38,10 +38,14 @@
     font-size: 1.6rem;
 }
 
+.section-task-form{
+    height: 100px;
+    width: 80%;
+}
+
 .list-section{
-    margin: auto;
     padding: 1rem;
-    width: 900px;
+
 }
 
 .header-list-section{
@@ -55,73 +59,94 @@
     font-size: 2.5rem;
 }
 
-.texto-nova-tarefa{
-    color: var(--cor-principal);
-    font-family: 'Oswald';
-    font-weight: 200;
-    text-decoration: underline;
+.button-new-task{
+    background-color: var(--cor-principal);
+    box-shadow: 0 .25rem 1.5rem rgba(0, 0, 0, .5);
+    position: relative;
+    border: none;
+    border-radius: 1rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    float: right;
+    color: white;
+    font-family: 'ubuntu';
+    font-size: 1.6rem;
+    transition: all .5s;
+    overflow: hidden;
+    width: 170px;
 }
 
-.modal-tarefa{
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.164);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 100vh;
-    width: 100vw;
-    z-index: 500;
+.button-new-task::after{
+    content: '+';
+    font-size: 2rem;
+    position: absolute;
+    top: 15%;
+    left: 110%;
+    transform: translateX(50%);
+    transition: left .5s ease-in-out;
 }
 
-.card-modal-tarefa{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #FFF;
-    box-shadow: 0 .8rem 1rem .2rem rgba(0, 0, 0, 0.3);
-    border-radius: .5rem;
-    height: 650px;
-    width: 700px;
+.button-new-task:hover{
+    text-indent: -250%;
 }
 
-.card-modal-tarefa h2{
-    font-family: 'Ubuntu';
-    margin: 1rem;
+.button-new-task:hover::after{
+    left: 55%;
 }
 
-.box-field{
-    display: flex;
-    flex-direction: column;
-    margin: .5rem 0;
+.counter-card{
+    background-color: var(--cor-principal);
+    border-radius: 1rem;
+    height: 300px;
+    width: 320px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 .3rem 1.5rem .2rem rgba(0, 0, 0, .5);
 }
 
-.box-field label{
-    font-family: 'Ubuntu';
-    font-size: 1.3rem;
-    color: #666;
-}
-
-.field, .box-field textarea{
+.counter-card h4{
+    color: #FFF;
     font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
-    font-size: 1.3rem;
-    border: solid 1px var(--cor-principal);
-    border-radius: 6px;
-    outline: none;
-    width: 400px;
+    font-size: 2rem;
+    font-weight: 200;
+    margin: 1rem .5rem;
 }
 
-.field{
-    height: 40px;
+.counter-card h2{
+    font-family: 'Ubuntu';
+    color: #FFF;
+    font-size: 8rem;
+    margin-left: 2rem;
 }
 
-.field:focus, .box-field textarea:focus{
-    border: solid 1px var(--cor-principal);
+.circle{
+    background-color: var(--cor-rose);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    height: 100px;
+    width: 100px;
 }
 
-.box-field textarea{
-    height: 200px;
-    resize: none;
+.circle::before, .circle::after{
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+}
+
+.circle::after{
+    width: 150%;
+    height: 150%;
+    top: -30%;
+    left: -30%;
+    background-color: #ff9fae80;
+}
+
+.circle::before{
+    width: 200%;
+    height: 200%;
+    top: -55%;
+    left: -55%;
+    background-color: #ff9fae46;
 }

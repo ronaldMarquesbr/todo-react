@@ -31,25 +31,32 @@ function App(props){
                     
                 </header>
 
-                <div className='section-task-form'>
+                <div className='d-flex justify-content-around'>
 
+                    <div className='d-flex flex-column gap-4'>
 
+                        <div className='section-task-form'>
 
-                </div>
-                
-                <div className='d-flex mx-5 justify-content-between'>
+                            <h3>Nova tarefa</h3>
 
-                    <div className='list-section'>
-                        
-                        <div className='header-list-section'>
+                            <input placeholder='Título' />
+                            <textarea placeholder='Descrição'></textarea>
 
-                            <h2 className='titulo-tarefas'>Tarefas</h2>
+                            <button className='button-new-task'>Nova tarefa</button>
 
                         </div>
-                        
-                        <List></List>
 
-                        <button className='button-new-task'>Nova tarefa</button>
+                        <div className='list-section'>
+                            
+                            <div className='header-list-section'>
+
+                                <h2 className='titulo-tarefas'>Tarefas</h2>
+
+                            </div>
+                            
+                            <List></List>
+
+                        </div>
 
                     </div>
 
@@ -62,6 +69,8 @@ function App(props){
                     </div>
 
                 </div>
+
+               
 
             </div>
 

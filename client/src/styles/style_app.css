@@ -13,8 +13,9 @@
 .container-app{
     background-color: white;
     border-radius: .5rem;
-    margin: auto;
-    min-height: 800px;
+    margin: 2rem 0;
+    padding-bottom: 2rem;
+    min-height: 900px;
     width: var(--width-corpo);
     z-index: 2;
 }
@@ -39,48 +40,66 @@
 }
 
 .section-task-form{
-    height: 100px;
-    width: 80%;
-}
-
-.list-section{
-    padding: 1rem;
-
-}
-
-.header-list-section{
+    border: solid 1px rgba(0, 0, 0, .4);
+    border-radius: 1rem;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, .2);
+    padding: 1.5rem;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    row-gap: .8rem;
+    height: fit-content;
+    width: 500px;
 }
 
-.titulo-tarefas{
-    font-family: 'Ubuntu';
-    font-size: 2.5rem;
+.section-task-form h3{
+    font-family: 'oswald';
+}
+
+.section-task-form input, .section-task-form textarea{
+    text-indent: 5px;
+    border: solid 2px rgb(134, 134, 134);
+    border-radius: 5px;
+    outline: none;
+    transition: all .1s;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+}
+
+.section-task-form input:focus, .section-task-form textarea:focus{
+    border: solid 2px var(--cor-secundaria);
+    outline: solid 3px var(--cor-terciaria);
+}
+
+.section-task-form input{
+    height: 35px;
+}
+
+.section-task-form textarea{
+    height: 80px;
+    resize: none;
 }
 
 .button-new-task{
+    align-self: flex-end;
     background-color: var(--cor-principal);
     box-shadow: 0 .25rem 1.5rem rgba(0, 0, 0, .5);
     position: relative;
     border: none;
     border-radius: 1rem;
     margin: 1rem 0;
-    padding: 1rem;
-    float: right;
+    padding: .7rem 1rem;
     color: white;
     font-family: 'ubuntu';
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     transition: all .5s;
     overflow: hidden;
-    width: 170px;
+    width: 150px;
 }
 
 .button-new-task::after{
     content: '+';
     font-size: 2rem;
     position: absolute;
-    top: 15%;
+    top: 5%;
     left: 110%;
     transform: translateX(50%);
     transition: left .5s ease-in-out;
@@ -92,6 +111,22 @@
 
 .button-new-task:hover::after{
     left: 55%;
+}
+
+.list-section{
+    width: fit-content;
+    overflow: hidden !important;
+}
+
+.header-list-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titulo-tarefas{
+    font-family: 'Ubuntu';
+    font-size: 2.5rem;
 }
 
 .counter-card{

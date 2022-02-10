@@ -3,8 +3,11 @@
 }
 
 .list > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
-  transition: all .5s;
+  width: min-content ;
 }
 #list-item {
   --background: #ffffff;
@@ -16,7 +19,7 @@
   --border-radius: 10px;
 
   height: var(--height);
-  width: 550px;
+  width: 750px;
   padding: 10px 20px 10px 20px;
   background: var(--background);
   border: solid 1px #666;
@@ -27,35 +30,28 @@
   align-items: center;
   z-index: 10;
 }
-  .margin-desc{
-    padding-bottom: var(--height-desc);
-  }
   .showDesc{
-    top: calc(100% - var(--height-desc)) !important;
-    max-height: var(--height-desc) !important;
+    box-shadow: 0 .1rem .5rem .2rem rgba(0, 0, 0, .15);
+    transform: translateY(0) !important;
     padding: 1rem !important;
+    pointer-events: all !important;
+    margin: 0 0 0.7rem 0;
   }
   .desc-task{
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(255, 255, 255);
     border: solid 1px #666;
-    border-end-start-radius: 1rem;
-    border-end-end-radius: 1rem;
+    border-end-start-radius: .5rem;
+    border-end-end-radius: .5rem;
     padding: 0;
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translateX(-50%);
     max-height: 0px;
+    transform: translateY(-10px);
     transition: all .5s;
     overflow: hidden;
     pointer-events: none;
     width: 90%;
     z-index: 1;
   }
-  .desc-task h4{
-    font-family: 'Ubuntu';
-    font-weight: 400;
-  }
+
   .desc-task p{
     font-size: 1.3rem;
     font-family: 'Ubuntu';

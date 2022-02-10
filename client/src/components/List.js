@@ -8,9 +8,9 @@ function List(props){
 
         let desc = icon.parentNode.parentNode.querySelector('.desc-task');
         let descParent = desc.parentNode;
-        
+
+
         let animClass = 'showDesc';
-        let marginDesc = 'margin-desc'
 
         for(let value of desc.classList){
 
@@ -25,13 +25,15 @@ function List(props){
         if(inClassList){
 
             desc.classList.remove(animClass);
-            descParent.classList.remove(marginDesc);
-
+            desc.style.maxHeight = 0
 
         } else {
 
+            let textDesc = desc.querySelector('p');
+            desc.style.maxHeight = (parseInt((window.getComputedStyle( textDesc ).height).slice(0 , -2)) + 150).toString() + 'px';
+
             desc.classList.add(animClass);
-            descParent.classList.add(marginDesc);
+            
 
         }
 
@@ -53,7 +55,6 @@ function List(props){
 
                 <div className='desc-task'>
 
-                        <h4>Descrição:</h4>
                         <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI</p>
                         <button>Excluir</button>
 
@@ -73,8 +74,10 @@ function List(props){
 
                 <div className='desc-task'>
 
-                        <h4>Descrição:</h4>
-                        <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,</p>
+                        <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
+                        Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
+
+                        </p>
                         <button>Excluir</button>
 
                 </div>
@@ -93,7 +96,6 @@ function List(props){
 
                 <div className='desc-task'>
 
-                        <h4>Descrição:</h4>
                         <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,</p>
                         <button>Excluir</button>
 

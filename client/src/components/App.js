@@ -28,12 +28,16 @@ function App(props){
 
                         <div className='section-task-form'>
 
-                            <h3>Nova tarefa</h3>
+                            <form className='form-new-task'>
 
-                            <input placeholder='Título' required />
-                            <textarea placeholder='Descrição' required></textarea>
+                                <h3>Nova tarefa</h3>
 
-                            <button className='button-new-task'>Nova tarefa</button>
+                                <input placeholder='Título' required />
+                                <textarea placeholder='Descrição' required></textarea>
+
+                                <button className='button-new-task'>Nova tarefa</button>
+
+                            </form>
 
                         </div>
 

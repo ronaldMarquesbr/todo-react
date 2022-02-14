@@ -1,26 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import api from '../services/api';
 
 function List(props){
 
-    function submitTask(event){
+    const [items, setItems] = useState([]);
+    const [username, setUsername] = useState('');
 
-        event.preventDefault();
+    useEffect( () => {
 
-        let form = event.target;
+        api.get('/user/userdata').then( res => {
+            setItems(res.data.tasks)
+        })
 
-
-
-    }
-
-    // app.post('/', express.urlencoded({extended: true}), (req, res) => {
-
-    //     const title = req.body.title
-    //     const desc = req.body.desc
-    
-    //     User.updateOne({name: "Ronald Pinto Marques"}, { $addToSet: { tasks: {title, desc} } });
-    
-    // })
+    }, []);
 
     function addAnimation(icon){
 
@@ -32,7 +24,7 @@ function List(props){
 
         for(let value of desc.classList){
 
-            if(value == animClass){
+            if(value === animClass){
 
                 inClassList = true
 
@@ -59,66 +51,29 @@ function List(props){
     return(
 
         <div className='list'>
-            
-            <div>
 
-                <div id="list-item">
-                        
-                    <input type="checkbox"></input>
-                    <label>Teste</label>
-                    <i className='bx bxs-chevron-down' onClick={(event) => addAnimation(event.target)}></i>
+            {items.map( (item, index) =>
 
-                </div>
+                <div key={index}>
 
-                <div className='desc-task'>
+                    <div className="header-task">
+                            
+                        <input type="checkbox"></input>
+                        <label>{item.title}</label>
+                        <i className='bx bxs-chevron-down' onClick={(event) => addAnimation(event.target)}></i>
 
-                        <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI</p>
-                        <button>Excluir</button>
+                    </div>
 
-                </div>
+                    <div className='desc-task'>
 
-            </div>
+                            <p>{item.desc}</p>
+                            <button>Excluir</button>
 
-            <div>
-
-                <div id="list-item">
-                        
-                    <input type="checkbox"></input>
-                    <label>Teste</label>
-                    <i className='bx bxs-chevron-down' onClick={(event) => addAnimation(event.target)}></i>
+                    </div>
 
                 </div>
 
-                <div className='desc-task'>
-
-                        <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
-                        Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
-
-                        </p>
-                        <button>Excluir</button>
-
-                </div>
-
-            </div>
-
-            <div>
-
-                <div id="list-item">
-                        
-                    <input type="checkbox"></input>
-                    <label>Teste</label>
-                    <i className='bx bxs-chevron-down' onClick={(event) => addAnimation(event.target)}></i>
-
-                </div>
-
-                <div className='desc-task'>
-
-                        <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,</p>
-                        <button>Excluir</button>
-
-                </div>
-
-            </div>
+            )}
         
         </div>
 

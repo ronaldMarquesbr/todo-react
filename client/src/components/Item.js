@@ -1,6 +1,5 @@
 class Item{
 
-    // variável de class
     static ID = Math.random();
 
 

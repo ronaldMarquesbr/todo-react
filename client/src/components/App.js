@@ -1,13 +1,16 @@
 import React from 'react';
+import {createStore, combineReducers} from 'redux';
+import { Provider } from 'react-redux';
 import '../styles/style_app.css';
-import api from '../services/api';
+import submitTask from '../scripts/submitTask';
 
 // COMPONENTS
 import List from './List';
 
 function App(props){
+    
 
-
+    const store = createStore()
 
     return(
 
@@ -28,12 +31,12 @@ function App(props){
 
                         <div className='section-task-form'>
 
-                            <form className='form-new-task'>
+                            <form className='form-new-task' onSubmit={event => submitTask(event)} >
 
                                 <h3>Nova tarefa</h3>
 
-                                <input placeholder='Título' required />
-                                <textarea placeholder='Descrição' required></textarea>
+                                <input placeholder='Título' name='title' required />
+                                <textarea placeholder='Descrição' name='desc' required></textarea>
 
                                 <button className='button-new-task'>Nova tarefa</button>
 

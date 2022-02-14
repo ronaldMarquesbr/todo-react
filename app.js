@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const userRouter = require('./login_jwt/routes/userRouter');
 const session = require('express-session');
+const User = require('./login_jwt/models/User')
 require('dotenv').config()
 
 
@@ -44,8 +45,17 @@ if(process.env.NODE_ENV != 'development'){
 
 app.use('/user', express.urlencoded({ extended: true }) ,userRouter);
 
-app.post('/newtask', (req, res) => {
-    console.log(req.body);
+app.post('/newtask', express.urlencoded({ extended: true }), async (req, res) => {
+
+    const title = req.body.title
+    const desc = req.body.desc
+
+    console.log(title);
+    console.log(desc);
+
+    const task = await User.updateOne({name: "Ronald Pinto Marques"}, { $addToSet: { tasks: {title, desc} } });
+    console.log(task)
+
 })
 
 app.use((req, res, next) => {

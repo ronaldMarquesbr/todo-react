@@ -9,7 +9,7 @@
   position: relative;
   width: min-content ;
 }
-#list-item {
+.header-task {
   --background: #ffffff;
   --text: #414856;
   --check: #4F29F0;
@@ -73,13 +73,13 @@
     color: white;
     background-color: red;
   }
-  #list-item i{
+  .header-task i{
     justify-self: flex-end;
     font-size: 1.5rem;
     float: right;
     cursor: pointer;
   }
-  #list-item label {
+  .header-task label {
     color: var(--text);
     position: relative;
     cursor: pointer;
@@ -90,10 +90,10 @@
     align-items: center;
     width: fit-content;
     transition: color .3s ease; }
-    #list-item label::before, #list-item label::after {
+    .header-task label::before, .header-task label::after {
       content: "";
       position: absolute; }
-    #list-item label::before {
+    .header-task label::before {
       height: 3px;
       width: 8px;
       left: -27px;
@@ -101,12 +101,12 @@
       background: var(--check);
       border-radius: 2px;
       transition: background .3s ease; }
-    #list-item label:after {
+    .header-task label:after {
       height: 4px;
       width: 4px;
       left: -25px;
       border-radius: 50%; }
-  #list-item input[type="checkbox"] {
+  .header-task input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     position: relative;
@@ -120,32 +120,32 @@
     background: var(--background);
     display: grid;
     align-items: center; }
-    #list-item input[type="checkbox"]::before, #list-item input[type="checkbox"]::after {
+    .header-task input[type="checkbox"]::before, .header-task input[type="checkbox"]::after {
       content: "";
       position: absolute;
       height: 2.5px;
       top: 60% !important;
       background: var(--check);
       border-radius: 2px; }
-    #list-item input[type="checkbox"]::before {
+    .header-task input[type="checkbox"]::before {
       width: 0px;
       right: 60%;
       transform-origin: right bottom; }
-    #list-item input[type="checkbox"]::after {
+    .header-task input[type="checkbox"]::after {
       width: 0px;
       left: 40%;
       transform-origin: left bottom; }
-    #list-item input[type="checkbox"]:checked::before {
+    .header-task input[type="checkbox"]:checked::before {
       animation: check-01 .4s ease forwards; }
-    #list-item input[type="checkbox"]:checked::after {
+    .header-task input[type="checkbox"]:checked::after {
       animation: check-02 .4s ease forwards; }
-    #list-item input[type="checkbox"]:checked + label {
+    .header-task input[type="checkbox"]:checked + label {
       color: var(--disabled);
       animation: move .3s ease .1s forwards; }
-      #list-item input[type="checkbox"]:checked + label::before {
+      .header-task input[type="checkbox"]:checked + label::before {
         background: var(--disabled);
         animation: slice .4s ease forwards; }
-      #list-item input[type="checkbox"]:checked + label::after {
+      .header-task input[type="checkbox"]:checked + label::after {
         animation: firework .5s ease forwards .1s; }
 
 @keyframes move {

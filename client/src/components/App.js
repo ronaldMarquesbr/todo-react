@@ -7,16 +7,7 @@ import List from './List';
 
 function App(props){
 
-    api.get('/user_session').then( res => {
-        if(res){
-            console.log(res)
-        } else {
-            console.log('não tem sessão')
-            // let usuario = res;
-            // let titulo = document.getElementsByClassName('usuario');
-            // titulo.innerHTML = `${usuario}`;
-        }
-    })
+
 
     return(
 
@@ -39,8 +30,8 @@ function App(props){
 
                             <h3>Nova tarefa</h3>
 
-                            <input placeholder='Título' />
-                            <textarea placeholder='Descrição'></textarea>
+                            <input placeholder='Título' required />
+                            <textarea placeholder='Descrição' required></textarea>
 
                             <button className='button-new-task'>Nova tarefa</button>
 

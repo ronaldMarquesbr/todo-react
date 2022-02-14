@@ -44,14 +44,8 @@ if(process.env.NODE_ENV != 'development'){
 
 app.use('/user', express.urlencoded({ extended: true }) ,userRouter);
 
-app.get('/user_session', (req, res) => {
-
-    if(req.session.login){
-        res.send(req.session.login);
-    } else {
-        res.send(false);
-    }
-
+app.post('/newtask', (req, res) => {
+    console.log(req.body);
 })
 
 app.use((req, res, next) => {

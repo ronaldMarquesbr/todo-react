@@ -15,7 +15,7 @@ function submitTask(event){
         method: 'POST',
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: qs.stringify(data),
-        url: '/newtask',
+        url: '/task/new',
     };
 
     api(options);

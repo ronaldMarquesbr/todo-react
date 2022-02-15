@@ -8,9 +8,6 @@ import submitTask from '../scripts/submitTask';
 import List from './List';
 
 function App(props){
-    
-
-    const store = createStore()
 
     return(
 

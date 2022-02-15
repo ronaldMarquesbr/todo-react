@@ -24,11 +24,7 @@ function List(props){
 
         for(let value of desc.classList){
 
-            if(value === animClass){
-
-                inClassList = true
-
-            } 
+            if(value === animClass){ inClassList = true } 
 
         }
 

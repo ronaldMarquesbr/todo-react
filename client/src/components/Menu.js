@@ -1,11 +1,14 @@
-import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import '../styles/style_menu.css'
 
 function Menu(props){
 
-    const state = useSelector((state) => {return state} )
-    const dispatch = useDispatch();
+    function showModal(){
+
+        let modal = document.getElementById('modal');
+        modal.classList.toggle('showModal');
+
+    }
 
     return(
 
@@ -28,7 +31,7 @@ function Menu(props){
                      
                             if(item === 'Login'){
 
-                                return(<li key={index} className='nav-item mx-1 item-login'><a onClick={() => {dispatch({type:'show_login'})}} className='nav-link'>{item}</a></li>);
+                                return(<li key={index} className='nav-item mx-1 item-login'><a href={`#${item}`} onClick={() => { showModal() }} className='nav-link'>{item}</a></li>);
 
                             } else {
 

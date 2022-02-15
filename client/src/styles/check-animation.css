@@ -9,6 +9,7 @@
   position: relative;
   width: min-content ;
 }
+
 .header-task {
   --background: #ffffff;
   --text: #414856;
@@ -53,7 +54,7 @@
   }
 
   .desc-task p{
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-family: 'Ubuntu';
     font-weight: 200;
   }
@@ -66,7 +67,7 @@
     font-size: 1.2rem;
     font-family: 'Oswald';
     transition: all .3s;
-    padding: .5rem 1rem;
+    padding: .2rem 1rem;
     float: right;
   }
   .desc-task button:hover{

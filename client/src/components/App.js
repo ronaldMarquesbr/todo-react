@@ -1,11 +1,16 @@
 import React from 'react';
-import {createStore, combineReducers} from 'redux';
+import {applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import listReducer from '../reducers/listReducer';
+import NewTaskForm from './NewTaskForm';
 import '../styles/style_app.css';
-import submitTask from '../scripts/submitTask';
+
 
 // COMPONENTS
 import List from './List';
+
+const store = createStore(listReducer, applyMiddleware(thunk));
 
 function App(props){
 
@@ -15,57 +20,41 @@ function App(props){
 
             <div className='container-app'>
 
-                <header className='header-app'>
+                <Provider store={store}>
 
-                    <h1 className='titulo-app'>To Do</h1>
-                    <h2 className='name-user'><i className='bx bx-user'></i>Usuário</h2>
-                    
-                </header>
+                    <header className='header-app'>
 
-                <div className='d-flex justify-content-around'>
+                        <h1 className='titulo-app'>To Do</h1>
+                        <h2 className='name-user'><i className='bx bx-user'></i>Usuário</h2>
+                        
+                    </header>
 
-                    <div className='d-flex flex-column gap-4'>
+                    <div className='d-flex justify-content-around'>
 
-                        <div className='section-task-form'>
+                        <div className='d-flex flex-column gap-4'>
 
-                            <form className='form-new-task' onSubmit={event => submitTask(event)} >
+                            <NewTaskForm />
 
-                                <h3>Nova tarefa</h3>
-
-                                <input placeholder='Título' name='title' required />
-                                <textarea placeholder='Descrição' name='desc' required></textarea>
-
-                                <button className='button-new-task'>Nova tarefa</button>
-
-                            </form>
-
-                        </div>
-
-                        <div className='list-section'>
-                            
-                            <div className='header-list-section'>
-
+                            <div className='list-section'>
+                        
                                 <h2 className='titulo-tarefas'>Tarefas</h2>
+                                <List></List>
 
                             </div>
+
+                        </div>
+
+                        <div className='counter-card'>
                             
-                            <List></List>
+                            <h4>Tarefas realizadas</h4>
+                            <h2>8</h2>
+                            <div className='circle'></div>
 
                         </div>
 
                     </div>
 
-                    <div className='counter-card'>
-                        
-                        <h4>Tarefas realizadas</h4>
-                        <h2>8</h2>
-                        <div className='circle'></div>
-
-                    </div>
-
-                </div>
-
-               
+                </Provider>
 
             </div>
 

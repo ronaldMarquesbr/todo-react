@@ -1,18 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import api from '../services/api';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 function List(props){
 
-    const [items, setItems] = useState([]);
-    const [username, setUsername] = useState('');
-
-    useEffect( () => {
-
-        api.get('/user/userdata').then( res => {
-            setItems(res.data.tasks)
-        })
-
-    }, []);
+    const items = useSelector( state => state );
 
     function addAnimation(icon){
 

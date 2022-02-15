@@ -1,29 +1,17 @@
 const listReducer = (state = [], action) => {
 
     switch (action.type) {
-        case 'ADD_ITEM':
+
+        case 'LOAD_LIST':
             
-            return [...state, action.payload];
-
-        case 'DELETE_ITEM':
-        
-            return state.filter(item => item.id !== action.payload);
-
-        case 'CHANGE_DONE':
-        
-            return state.map(item => {
-                if(item.id === action.payload){
-                    item.done = !item.done
-                } 
-
-                return item;
-
-            });                
+            return action.payload;
     
         default:
+
             return state;
+
     }
 
 }
 
-export default listReducer
+export default listReducer;

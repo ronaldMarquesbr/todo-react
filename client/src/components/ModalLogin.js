@@ -1,31 +1,16 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { useNavigate } from 'react-router';
 import validateLogin from '../scripts/validateFormLogin';
-// import '../scripts/validateFormRegistry'
-
+import '../styles/style_modal.css';
 import '../styles/style_loginCard.css';
 
-function LoginCard(){
+function ModalLogin(props){
 
-    const state = useSelector((state) => {return state} )
+    let navigate = useNavigate();
 
     function nameClass(text){
         return `${text}-login-card`
-    }
-
-    useEffect(()=>{
-
-        var loginSection = document.getElementById('login');
-
-        if(state === 'show_login'){
-            loginSection.classList.remove('hide');
-        } else {
-            loginSection.classList.add('hide');
-        }
-    }, [state])
-    
-    let navigate = useNavigate();
+    }   
 
     async function formSubmit( eve ) {
 
@@ -40,7 +25,26 @@ function LoginCard(){
 
     };
 
-    return( <div className={`${nameClass('content')} hide`} id='login'>
+    function removeModal(event){
+
+        let modal = document.getElementById('modal');
+        let closeIcon = document.getElementById('close-icon');
+
+        if( event.target === modal || event.target === closeIcon ){
+            modal.classList.remove('showModal');
+        }
+
+    }
+
+    return(
+
+        <div id='modal' className='Modal' onClick={ event => { removeModal(event) }}>
+
+            <div className='cardModal'>
+
+                <i className='bx bx-x close-icon' onClick={ event => { removeModal(event) }} id='close-icon'></i>
+
+                <div className={nameClass('content')}>
 
                 <h2 className={nameClass('titulo')}>Login</h2>
 
@@ -58,11 +62,16 @@ function LoginCard(){
 
                 </form>
 
-                <div className='footer-login-card' >Ainda não tem uma conta?<a className={nameClass('link')}>Cadastre-se</a></div>
+                <div className='footer-login-card' >Ainda não tem uma conta?<i className={nameClass('link')}>Cadastre-se</i></div>
 
-            </div>)
+            </div>
+
+            </div>
+
+        </div>
+
+    )
 
 }
 
-
-export default LoginCard;
+export default ModalLogin;

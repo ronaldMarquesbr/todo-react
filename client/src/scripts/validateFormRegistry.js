@@ -1,4 +1,5 @@
 import api from '../services/api';
+import qs from 'qs';
 
 function validateEmail(field){
     var validRegex = /^\w+([.-]?\w)*@\w+([.]+\w+)+$/;
@@ -10,20 +11,22 @@ function validateEmail(field){
 
 async function repeatedEmail(field){
 
-    let emails = [];
+    let isRepeated = Boolean;
+    let email = field.value;
 
-    await api.get('/user/emaillist').then((response)=> {
-        emails = response.data;
+    const options = {
+        method: 'POST',
+        headers: { 'content-type': 'application/x-www-form-urlencoded' },
+        data: qs.stringify({ email }),
+        url: '/user/repeatedemail',
+    };
+
+    await api(options).then( response => {
+        isRepeated = response.data;
     });
 
-    for(let email of emails){
-        if(field.value == email.toString()){
-            return true;
-        } 
-    }
+    return isRepeated;
 
-    return false;
-   
 }
 
 function validateField(field){        

@@ -45,12 +45,19 @@ const userController = {
 
         },
 
-    emailList: async function (req, res){
+    repeatedEmail: async function (req, res){
 
+        let isRepeated = false;
+        let email = req.body.email;
         const users = await User.find({});
-        let emails = users.map( user => user.email); 
-        
-        res.send(emails);
+
+        users.map( user => {
+            if (user.email === email) {
+                isRepeated = true;
+            }; 
+        });        
+
+        res.send(isRepeated);
 
     },
 

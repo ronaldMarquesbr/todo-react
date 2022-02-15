@@ -8,7 +8,7 @@ router.post('/register', userController.register);
 
 router.post('/login', userController.login);
 
-router.get('/emaillist', userController.emailList);
+router.post('/repeatedemail', userController.repeatedEmail);
 
 router.get('/userdata', userController.userdata);
 

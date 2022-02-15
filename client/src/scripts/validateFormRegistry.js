@@ -12,7 +12,7 @@ async function repeatedEmail(field){
 
     let emails = [];
 
-    await api.get('/user/users').then((response)=> {
+    await api.get('/user/emaillist').then((response)=> {
         emails = response.data;
     });
 

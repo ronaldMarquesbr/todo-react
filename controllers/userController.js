@@ -27,6 +27,7 @@ const userController = {
         }
 
     },
+
     login: async function (req, res){
 
         const {error} = loginValidate(req.body);
@@ -42,7 +43,27 @@ const userController = {
         req.session.login = req.body.email;
         res.send(true);
 
-        }
+        },
+
+    emailList: async function (req, res){
+
+        const users = await User.find({});
+        let emails = users.map( user => user.email); 
+        
+        res.send(emails);
+
+    },
+
+    userdata: async function (req, res){
+
+        const user = await User.findOne({email: "ronaldpmarques01@gmail.com"});
+        const data = {name: user.name, tasks: user.tasks};
+
+        res.send(data);
+
+    }
+    
+
 }
 
 

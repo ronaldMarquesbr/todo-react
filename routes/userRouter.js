@@ -6,21 +6,10 @@ const userController = require('../controllers/userController');
 
 router.post('/register', userController.register);
 
-router.post('/login',userController.login);
+router.post('/login', userController.login);
 
-router.get('/users', async (req, res)=> {
+router.get('/emaillist', userController.emailList);
 
-    const users = await User.find({});
-    let emails = users.map( user => user.email); 
-
-    res.send(emails);
-
-})
-
-// router.get('/userdata', (req, res) => {
-
-//     req
-
-// })
+router.get('/userdata', userController.userdata);
 
 module.exports = router;

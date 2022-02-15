@@ -3,8 +3,8 @@ const app = express();
 const path = require("path");
 const mongoose = require('mongoose');
 const cors = require('cors');
-const userRouter = require('./login_jwt/routes/userRouter');
-const taskRouter = require('./login_jwt/routes/taskRouter');
+const userRouter = require('./routes/userRouter');
+const taskRouter = require('./routes/taskRouter');
 const session = require('express-session');
 require('dotenv').config()
 

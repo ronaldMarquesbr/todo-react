@@ -4,6 +4,7 @@ import { requestUsername } from '../actions/appActions';
 import '../styles/style_app.css';
 
 // COMPONENTS
+import Loader from './Loader';
 import List from './List';
 import NewTaskForm from './NewTaskForm';
 
@@ -22,6 +23,8 @@ function App(props){
     return(
 
         <div className='background'>
+
+            <Loader/>
 
             <div className='container-app'>
 

@@ -1,9 +1,9 @@
-const listReducer = ( state = [], action ) => {
-
+const userReducer = ( state = '', action ) => {
+    
     switch (action.type) {
 
-        case 'LOAD_LIST':
-            
+        case 'LOAD_USERNAME':
+
             return action.payload;
     
         default:
@@ -12,6 +12,6 @@ const listReducer = ( state = [], action ) => {
 
     }
 
-}
+} 
 
-export default listReducer;
+export default userReducer;

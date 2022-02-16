@@ -1,11 +1,24 @@
 import api from '../services/api';
 
+
 export function requestList(){
 
     return (dispatch) => {
 
         api.get('/user/userdata').then( res => {
-            dispatch(loadList(res.data.tasks))
+            dispatch( loadList(res.data.tasks) );
+        })
+        
+    }
+
+}
+
+export function requestUsername(){
+
+    return (dispatch) => {
+
+        api.get('/user/userdata').then( res => {
+            dispatch( loadUsername(res.data.name) );
         })
         
     }
@@ -13,9 +26,9 @@ export function requestList(){
 }
 
 export function loadList(data){
-    return {type: 'LOAD_LIST', payload: data}
+    return { type: 'LOAD_LIST', payload: data }
 }
 
-export function loadUsername(){
-    return {type: 'LOAD_USERNAME'};
+export function loadUsername(username){
+    return { type: 'LOAD_USERNAME', payload: username };
 }

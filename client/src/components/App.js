@@ -1,18 +1,23 @@
-import React from 'react';
-import {applyMiddleware, createStore } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import listReducer from '../reducers/listReducer';
-import NewTaskForm from './NewTaskForm';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestUsername } from '../actions/appActions';
 import '../styles/style_app.css';
-
 
 // COMPONENTS
 import List from './List';
+import NewTaskForm from './NewTaskForm';
 
-const store = createStore(listReducer, applyMiddleware(thunk));
 
 function App(props){
+
+    const username = useSelector( state => state.user );
+    const dispatch = useDispatch();
+
+    useEffect( () => {
+
+        dispatch(requestUsername());
+
+    },[])
 
     return(
 
@@ -20,41 +25,37 @@ function App(props){
 
             <div className='container-app'>
 
-                <Provider store={store}>
+                <header className='header-app'>
 
-                    <header className='header-app'>
+                    <h1 className='titulo-app'>To Do</h1>
+                    <h2 className='name-user'><i className='bx bx-user'></i>{username.split(' ')[0]}</h2>
+                    
+                </header>
 
-                        <h1 className='titulo-app'>To Do</h1>
-                        <h2 className='name-user'><i className='bx bx-user'></i>Usuário</h2>
-                        
-                    </header>
+                <div className='d-flex justify-content-around'>
 
-                    <div className='d-flex justify-content-around'>
+                    <div className='d-flex flex-column gap-4'>
 
-                        <div className='d-flex flex-column gap-4'>
+                        <NewTaskForm />
 
-                            <NewTaskForm />
-
-                            <div className='list-section'>
-                        
-                                <h2 className='titulo-tarefas'>Tarefas</h2>
-                                <List></List>
-
-                            </div>
-
-                        </div>
-
-                        <div className='counter-card'>
-                            
-                            <h4>Tarefas realizadas</h4>
-                            <h2>8</h2>
-                            <div className='circle'></div>
+                        <div className='list-section'>
+                    
+                            <h2 className='titulo-tarefas'>Tarefas</h2>
+                            <List></List>
 
                         </div>
 
                     </div>
 
-                </Provider>
+                    <div className='counter-card'>
+                        
+                        <h4>Tarefas realizadas</h4>
+                        <h2>8</h2>
+                        <div className='circle'></div>
+
+                    </div>
+
+                </div>
 
             </div>
 

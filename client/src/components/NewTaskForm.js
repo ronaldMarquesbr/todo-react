@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import { useDispatch } from 'react-redux';
 import { requestList } from '../actions/appActions';
 import submitTask from '../scripts/submitTask';
@@ -8,10 +8,6 @@ import '../styles/style_newtaskform.css'
 function NewTaskForm(props){
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(requestList());
-    })
 
     function onSubmitTask(event){
 

@@ -1,9 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestList } from '../actions/appActions';
 
 function List(props){
 
-    const items = useSelector( state => state );
+    const items = useSelector( state => state.list );
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+        dispatch(requestList());
+
+    }, [])
+
 
     function addAnimation(icon){
 
